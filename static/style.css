@@ -1,0 +1,526 @@
+* {
+    box-sizing: border-box;
+    font-family: "Segoe UI", sans-serif;
+}
+
+body {
+    background: #111;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* MENU BACKGROUND IMAGES */
+.menu-card.chinese {
+    background-image: url("../static/images/chinese.jpg");
+}
+
+.menu-card.malay {
+    background-image: url("../static/images/malay.jpg");
+}
+
+.menu-card.korean {
+    background-image: url("../static/images/korean.jpg");
+}
+
+.menu-card.japanese {
+    background-image: url("../static/images/japanese.jpg");
+}
+
+.menu-card.desserts {
+    background-image: url("../static/images/desserts.jpg");
+}
+
+.menu-card.drinks {
+    background-image: url("../static/images/drinks.jpg");
+}
+
+.menu-card.fruits {
+    background-image: url("../static/images/fruits.jpg");
+}
+
+/* TABLET FRAME */
+.tablet-frame {
+    width: 810px;
+    height: 1080px;
+    background: #fff;
+    border-radius: 28px;
+    overflow: hidden;
+}
+
+/* NAVBAR */
+.navbar {
+    height: 80px;
+    background: #c1121f;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 24px;
+}
+
+.nav-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo {
+    width: 40px;
+    height: 40px;
+}
+
+.app-name {
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.language-select select {
+    padding: 6px 10px;
+    border-radius: 8px;
+    border: none;
+}
+
+/* MAIN */
+.container {
+    padding: 24px;
+}
+
+h2 {
+    margin-bottom: 16px;
+    color: #c1121f;
+}
+
+/* MENU GRID */
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+}
+
+.menu-card {
+    position: relative;
+    height: 160px;
+    border-radius: 16px;
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.menu-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(193, 18, 31, 0.25);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.menu-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 14px 30px rgba(0,0,0,0.3);
+}
+
+.menu-card:hover::before {
+    opacity: 1;
+}
+
+/* OVERLAY TITLE */
+.menu-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.menu-overlay span {
+    background: linear-gradient(135deg, rgba(193,18,31,0.85), rgba(193,18,31,0.6));
+    color: white;
+    padding: 10px 18px;
+    border-radius: 12px;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+/* ACTION BUTTONS */
+.action-buttons {
+    margin-top: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.primary-btn,
+.secondary-btn {
+    padding: 18px;
+    font-size: 18px;
+    border-radius: 14px;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+.primary-btn {
+    background: #c1121f;
+}
+
+.secondary-btn {
+    background: #f77f00;
+}
+
+/* Schedule Page */
+.schedule-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px;
+    gap: 16px;
+}
+
+.back-btn {
+    font-size: 28px;
+    cursor: pointer;
+    margin-right: 12px;
+}
+
+.legend-card {
+    background: #ffffff;
+    padding: 12px 16px;
+    border-radius: 14px;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12);
+    min-width: 220px;
+}
+
+.legend-title {
+    font-weight: 700;
+    font-size: 14px;
+    margin-bottom: 8px;
+    text-align: center;
+}
+
+.legend-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px 16px;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    font-size: 13px;
+    font-weight: 600;
+    gap: 6px;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    display: inline-block;
+    border-radius: 50%;
+}
+
+.green { background: #2ecc71; }
+.yellow { background: #f1c40f; }
+.red { background: #e74c3c; }
+.white { background: #ecf0f1; border: 1px solid #aaa; }
+
+.calendar {
+    padding: 16px;
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 6px;
+}
+
+.day-header {
+    font-weight: bold;
+    text-align: center;
+}
+
+.day {
+    height: 70px;
+    border-radius: 10px;
+    text-align: center;
+    padding-top: 6px;
+    cursor: pointer;
+    color: #111;
+    font-weight: 600;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.day:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.low { background: #2ecc71; }
+.medium { background: #f1c40f; }
+.high { background: #e74c3c; }
+.weekend { background: #fff; }
+
+/* Info Panel Styling */
+.info-panel {
+    padding: 16px;
+}
+
+.info-card {
+    background: #ffffff;
+    padding: 16px;
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.info-card h3 {
+    margin-top: 0;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.info-card p {
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+/* FOODCOURT PAGE STYLES  */
+/* TITLE BAR WITH BACK ARROW */
+.title-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin-bottom: 24px;
+}
+
+/* BACK ARROW */
+.back-arrow {
+    position: absolute;
+    left: 0;
+    font-size: 28px;
+    font-weight: 700;
+    color: #c1121f;
+    text-decoration: none;
+    padding: 6px 14px;
+    border-radius: 10px;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.back-arrow:hover {
+    background: rgba(193, 18, 31, 0.12);
+    transform: scale(1.1);
+}
+
+/* FOODCOURT GRID */
+.foodcourt-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 22px;
+}
+
+/* FOODCOURT CARD */
+.foodcourt-card {
+    position: relative;
+    height: 200px;
+    border-radius: 18px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.foodcourt-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* RED OVERLAY */
+.foodcourt-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(193, 18, 31, 0.35);
+    opacity: 0;
+    transition: opacity 0.35s ease;
+}
+
+.foodcourt-card:hover::before {
+    opacity: 1;
+}
+
+.foodcourt-card:hover {
+    transform: scale(1.06);
+    box-shadow: 0 16px 32px rgba(0,0,0,0.35);
+}
+
+/* FOODCOURT NAME */
+.foodcourt-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 22px;
+    font-weight: 700;
+    background: linear-gradient(
+        135deg,
+        rgba(193,18,31,0.85),
+        rgba(193,18,31,0.6)
+    );
+    border-radius: 18px;
+    opacity: 0.95;
+}
+
+/* INFO PANEL - BASE */
+/* Base panel */
+.fc-info-panel {
+    position: absolute;
+    top: 140px;
+    width: 360px;
+    height: 720px;
+    background: #ffffff;
+    border-radius: 22px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+    padding: 20px;
+    overflow-y: auto;
+
+    transition: right 0.5s ease, left 0.5s ease, opacity 0.5s ease;
+    opacity: 0;
+
+    /* Prevent hidden panel from blocking clicks */
+    pointer-events: none;
+}
+
+/* When visible */
+.fc-info-panel.show-left,
+.fc-info-panel.show-right {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* PANEL VISIBLE RIGHT */
+.fc-info-panel.show-right {
+    right: 24px;
+    left: auto;
+    opacity: 1;
+}
+
+/* PANEL VISIBLE LEFT */
+.fc-info-panel.show-left {
+    left: 24px;
+    right: auto;
+    opacity: 1;
+}
+
+/* PANEL HIDDEN OFF-SCREEN */
+.fc-info-panel.off-right {
+    right: -380px;
+    left: auto;
+    opacity: 0;
+}
+
+.fc-info-panel.off-left {
+    left: -380px;
+    right: auto;
+    opacity: 0;
+}
+
+/* HEADER */
+.fc-info-header h3 {
+    font-size: 24px;
+    font-weight: 800;
+    color: #c1121f;
+    margin-bottom: 12px;
+}
+
+/* SECTIONS */
+.fc-section h4 {
+    font-size: 16px;
+    margin: 16px 0 10px;
+    font-weight: 700;
+}
+
+/* STALL LIST */
+.stall-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Stall list progress bar */
+.stall-list li {
+    display: flex;
+    flex-direction: column; /* Stack text and bar */
+    align-items: flex-start;
+    margin-bottom: 14px;
+}
+
+.stall-list span {
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.stall-list small {
+    display: block;
+    font-size: 12px;
+    color: #666;
+}
+
+.percent-text {
+    font-weight: 700;
+    margin-left: 10px;
+}
+
+/* AVAILABILITY BAR */
+.bar {
+    width: 100%;
+    height: 12px;
+    background: #eee;
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+}
+
+.bar::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 0%; /* JS sets width dynamically */
+    background: linear-gradient(90deg, #2ecc71, #f1c40f, #e74c3c);
+    border-radius: 8px;
+    transition: width 0.5s ease;
+}
+
+/* TIME BUTTONS */
+.time-buttons {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.time-buttons button {
+    padding: 10px;
+    border-radius: 12px;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    background: #f3f3f3;
+}
+
+.time-buttons button.active {
+    background: #c1121f;
+    color: white;
+}
