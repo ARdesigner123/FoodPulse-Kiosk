@@ -97,14 +97,14 @@ document.addEventListener("DOMContentLoaded", () => {
     const scheduleBtn = document.getElementById("scheduleBtn");
     if (scheduleBtn) {
         scheduleBtn.addEventListener("click", () => {
-            window.location.href = "/schedule";
+            window.location.href = "schedule.html";
         });
     }
 
     const trackerBtn = document.getElementById("trackerBtn");
     if (trackerBtn) {
         trackerBtn.addEventListener("click", () => {
-            window.location.href = "/foodcourt";
+            window.location.href = "foodcourt.html";
         });
     }
 
@@ -1037,4 +1037,5 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     generateCalendar();
+
 });
