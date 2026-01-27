@@ -12,31 +12,31 @@ body {
 
 /* MENU BACKGROUND IMAGES */
 .menu-card.chinese {
-    background-image: url("images/chinese.jpg");
+    background-image: url("./images/chinese.jpg");
 }
 
 .menu-card.malay {
-    background-image: url("images/malay.jpg");
+    background-image: url("./images/malay.jpg");
 }
 
 .menu-card.korean {
-    background-image: url("images/korean.jpg");
+    background-image: url("./images/korean.jpg");
 }
 
 .menu-card.japanese {
-    background-image: url("images/japanese.jpg");
+    background-image: url("./images/japanese.jpg");
 }
 
 .menu-card.desserts {
-    background-image: url("images/desserts.jpg");
+    background-image: url("./images/desserts.jpg");
 }
 
 .menu-card.drinks {
-    background-image: url("images/drinks.jpg");
+    background-image: url("./images/drinks.jpg");
 }
 
 .menu-card.fruits {
-    background-image: url("images/fruits.jpg");
+    background-image: url("./images/fruits.jpg");
 }
 
 /* TABLET FRAME */
@@ -523,4 +523,5 @@ h2 {
 .time-buttons button.active {
     background: #c1121f;
     color: white;
+
 }
