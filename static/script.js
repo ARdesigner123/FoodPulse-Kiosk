@@ -178,42 +178,202 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const stallButtons = document.querySelectorAll(".stall-btn");
         const foodCards = document.getElementById("food-cards");
-        
-    /* ===== Stall Button Click ===== */
-    stallButtons.forEach(btn => {
-        btn.addEventListener("click", () => {
-            const stall = stallData[btn.dataset.stall];
 
-            const gridClass = stall.items.length === 1
+        /* ===== FC1 ===== */
+        "fc1-ban-mian-fish-soup": {
+            name: "Ban Mian / Fish Soup Stall (FC1)",
+            items: [
+                {
+                    name: "Ban Mian",
+                    price: "$3.00",
+                    rating: "4.2",
+                    comment: "Very chewy noodles and comforting soup. Uncle is friendly!",
+                    image: "static/images/ban_mian.jpg"
+                },
+                {
+                    name: "Sliced Fish Soup with Rice",
+                    price: "$5.00",
+                    rating: "4.2",
+                    comment: "Healthy, comforting choice. Perfect on rainy days.",
+                    image: "static/images/fish_soup.jpg"
+                }
+            ]
+        },
+
+        "fc1-economy-rice": {
+            name: "Mixed Rice / Cai Png Stall (FC1)",
+            items: [
+                {
+                    name: "2 Veg + 1 Meat Cai Png",
+                    price: "$3.00 - $3.50",
+                    rating: "3.9",
+                    comment: "Generous portions. Sweet and sour pork is highly recommended.",
+                    image: "static/images/mixed_rice.jpg"
+                }
+            ]
+        },
+
+        /* ===== FC2 ===== */
+        "fc2-economy-rice": {
+            name: "Economy Rice / Cai Png Stall (FC2)",
+            items: [
+                {
+                    name: "Mixed Rice with Drumstick",
+                    price: "$2.50 - $4.00",
+                    rating: "4.1",
+                    comment: "One of the best drumsticks on campus. Long queues but worth it.",
+                    image: "static/images/mixed_rice.jpg"
+                }
+            ]
+        },
+
+        /* ===== FC3 ===== */
+        "fc3-chinese-cuisine": {
+            name: "Chinese Cuisine Stall (FC3)",
+            items: [
+                {
+                    name: "Steamed Dumplings (Jiaozi)",
+                    price: "~$5.60 (8 pcs)",
+                    rating: "4.1",
+                    comment: "Authentic potstickers with great filling.",
+                    image: "static/images/steamed_dumplings.jpg"
+                },
+                {
+                    name: "Pan-fried Dumplings (Guotie)",
+                    price: "~$5.60 (8 pcs)",
+                    rating: "4.1",
+                    comment: "Crispy base and juicy inside. A student favourite.",
+                    image: "static/images/pan_fried_dumplings.jpg"
+                }
+            ]
+        },
+
+        "fc3-sp-mini-wok": {
+            name: "SP Mini Wok (FC3)",
+            items: [
+                {
+                    name: "Salted Egg Chicken Rice",
+                    price: "$4.30 - $4.50",
+                    rating: "4.5",
+                    comment: "Legendary status. 10/10 flavour but always long queues.",
+                    image: "static/images/salted_egg_chicken_rice.jpg"
+                },
+                {
+                    name: "Mala Chicken Rice",
+                    price: "$4.30",
+                    rating: "4.5",
+                    comment: "Spicy and addictive. Not for the faint-hearted.",
+                    image: "static/images/mala_chicken_rice.jpg"
+                }
+            ]
+        },
+
+        /* ===== FC4 ===== */
+        "fc4-taiwanese-chinese": {
+            name: "Taiwanese / Chinese-style Stall (FC4)",
+            items: [
+                {
+                    name: "Chicken Cutlet Rice",
+                    price: "$4.20 - $4.80",
+                    rating: "4.1",
+                    comment: "Chicken cutlet is the bomb. Crispy and satisfying.",
+                    image: "static/images/chicken_cutlet_rice.jpg"
+                },
+                {
+                    name: "Braised Pork Rice (Lu Rou Fan)",
+                    price: "$4.20 - $4.80",
+                    rating: "4.1",
+                    comment: "Flavour is good but portion can be inconsistent.",
+                    image: "static/images/braised_pork_rice.jpg"
+                }
+            ]
+        },
+
+        "fc4-happiness-sunbo": {
+            name: "Happiness Sunbo Chicken Rice (FC4)",
+            items: [
+                {
+                    name: "Standard Chicken Rice",
+                    price: "~$3.00",
+                    rating: "4.3",
+                    comment: "Cheapest chicken rice in SP. Chili sauce is super punchy.",
+                    image: "static/images/chicken_rice.jpg"
+                }
+            ]
+        },
+
+        /* ===== FC6 ===== */
+        "fc6-noodle-chinese": {
+            name: "Chinese-style Noodle Options (FC6)",
+            items: [
+                {
+                    name: "Fish Ball Noodles",
+                    price: "$2.00 - $3.00",
+                    rating: "3.7",
+                    comment: "Affordable and filling. Great for tight budgets.",
+                    image: "static/images/fish_ball_noodles.jpg"
+                },
+                {
+                    name: "Wanton Noodle Soup",
+                    price: "$3.00",
+                    rating: "3.7",
+                    comment: "Basic but filling. No frills student meal.",
+                    image: "static/images/wanton_noodle_soup.jpg"
+                }
+            ]
+        }
+    };
+        
+    /* ===== Stall Button Click (SAFE VERSION) ===== */
+stallButtons.forEach(btn => {
+    btn.addEventListener("click", () => {
+
+        const stallKey = btn.dataset.stall;
+        const stall = stallData[stallKey];
+
+        // 🛑 SAFETY CHECK
+        if (!stall || !stall.items) {
+            console.error("Stall data not found:", stallKey);
+            foodCards.innerHTML = `
+                <p style="color:red; text-align:center;">
+                    Menu data unavailable. Please try another stall.
+                </p>
+            `;
+            foodCards.style.display = "block";
+            return;
+        }
+
+        const gridClass = stall.items.length === 1
             ? "cards-grid single"
             : "cards-grid";
 
-            foodCards.innerHTML = `<h3>${stall.name}</h3><div class="${gridClass}">`;
+        foodCards.innerHTML = `<h3>${stall.name}</h3><div class="${gridClass}">`;
 
-            stall.items.forEach(item => {
-                foodCards.innerHTML += `
+        stall.items.forEach(item => {
+            foodCards.innerHTML += `
                 <div class="food-card">
-                <img src="${item.image}">
-                <div class="food-name">${item.name}</div>
-                <div class="food-details">
-                <p><strong>Price:</strong> ${item.price}</p>
-                <p><strong>Rating:</strong> ${item.rating} ⭐</p>
-                <p><em>"${item.comment}"</em></p>
+                    <img src="${item.image}" 
+                         alt="${item.name}"
+                         onerror="this.src='static/images/placeholder.jpg'">
+                    <div class="food-name">${item.name}</div>
+                    <div class="food-details">
+                        <p><strong>Price:</strong> ${item.price}</p>
+                        <p><strong>Rating:</strong> ${item.rating} ⭐</p>
+                        <p><em>"${item.comment}"</em></p>
+                    </div>
                 </div>
-                </div>
-                `;
-            });
-
-            foodCards.innerHTML += `</div>`;
-            foodCards.style.display = "block";
-
-            // ✨ Fade-in animation
-            foodCards.classList.remove("fade-out");
-            foodCards.classList.add("fade-in");
-            
-            foodCards.scrollIntoView({ behavior: "smooth" });
+            `;
         });
+
+        foodCards.innerHTML += `</div>`;
+        foodCards.style.display = "block";
+
+        foodCards.classList.remove("fade-out");
+        foodCards.classList.add("fade-in");
+
+        foodCards.scrollIntoView({ behavior: "smooth" });
     });
+});
 
         /* ============================
            FOOD COURT MAP NAVIGATION
@@ -1251,3 +1411,4 @@ document.addEventListener("DOMContentLoaded", () => {
     generateCalendar();
 
 });
+
