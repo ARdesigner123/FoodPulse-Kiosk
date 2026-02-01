@@ -179,6 +179,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const stallButtons = document.querySelectorAll(".stall-btn");
         const foodCards = document.getElementById("food-cards");
 
+        const stallData = {
         /* ===== FC1 ===== */
         "fc1-ban-mian-fish-soup": {
             name: "Ban Mian / Fish Soup Stall (FC1)",
@@ -323,8 +324,8 @@ document.addEventListener("DOMContentLoaded", () => {
             ]
         }
     };
-        
-    /* ===== Stall Button Click (SAFE VERSION) ===== */
+
+    /* ===== Stall Button Click ===== */
 stallButtons.forEach(btn => {
     btn.addEventListener("click", () => {
 
@@ -1409,6 +1410,5 @@ stallButtons.forEach(btn => {
         generateCalendar();
     };
     generateCalendar();
-
 });
 
