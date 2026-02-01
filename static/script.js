@@ -1,55 +1,111 @@
 const translations = {
     en: {
-        menuTitle: "Menu Categories",
+        menuTitle: "Food Court Menu",
         chinese: "Chinese",
         malay: "Malay",
         korean: "Korean",
         japanese: "Japanese",
         desserts: "Desserts",
         drinks: "Drinks",
-        fruits: "Fruits & Vegetables",
-        scheduleBtn: "Student Schedule",
+        fruits: "Fruits",
+        scheduleBtn: "Academic Schedule",
         trackerBtn: "Food Tracker",
-        langLabel: "Language"
+        langLabel: "Language",
+        crowdLevelLegend: "Crowd Level Legend",
+        low: "Low",
+        medium: "Medium",
+        high: "High",
+        weekend: "Weekend",
+        days: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
+        pickFoodcourt: "Pick Your Foodcourt",
+        salesAvailable: "Sales Available",
+        timePeriod: "Time Period",
+        time1: "8am-10am",
+        time2: "10am-12pm",
+        time3: "12pm-3pm",
+        time4: "3pm-5pm",
+        time5: "5pm-7pm"
     },
     zh: {
-        menuTitle: "菜单分类",
+        menuTitle: "美食广场菜单",
         chinese: "中餐",
         malay: "马来餐",
         korean: "韩餐",
         japanese: "日餐",
         desserts: "甜点",
         drinks: "饮料",
-        fruits: "水果与蔬菜",
-        scheduleBtn: "学生课程表",
-        trackerBtn: "剩余食物追踪",
-        langLabel: "语言"
+        fruits: "水果",
+        scheduleBtn: "学术日程",
+        trackerBtn: "食物追踪器",
+        langLabel: "语言",
+        crowdLevelLegend: "人群水平图例",
+        low: "低",
+        medium: "中",
+        high: "高",
+        weekend: "周末",
+        days: ["日", "一", "二", "三", "四", "五", "六"],
+        pickFoodcourt: "选择您的食阁",
+        salesAvailable: "可用销售",
+        timePeriod: "时间段",
+        time1: "上午8点-10点",
+        time2: "上午10点-12点",
+        time3: "中午12点-3点",
+        time4: "下午3点-5点",
+        time5: "下午5点-7点"
     },
     ta: {
-        menuTitle: "மெனு வகைகள்",
-        chinese: "சீன",
-        malay: "மலாய்",
-        korean: "கொரிய",
-        japanese: "ஜப்பானிய",
+        menuTitle: "உணவு நிலைய மெனு",
+        chinese: "சீன உணவு",
+        malay: "மலாய் உணவு",
+        korean: "கொரியன் உணவு",
+        japanese: "ஜப்பானிய உணவு",
         desserts: "இனிப்புகள்",
         drinks: "பானங்கள்",
-        fruits: "பழங்கள் & காய்கறிகள்",
-        scheduleBtn: "மாணவர் அட்டவணை",
-        trackerBtn: "உணவு கண்காணிப்பு",
-        langLabel: "மொழி"
+        fruits: "பழங்கள்",
+        scheduleBtn: "கல்வி அட்டவணை",
+        trackerBtn: "உணவு கண்காணிப்பாளர்",
+        langLabel: "மொழி",
+        crowdLevelLegend: "கூட்ட நிலை சின்னம்",
+        low: "குறைவு",
+        medium: "நடுத்தர",
+        high: "அதிக",
+        weekend: "வார இறுதி",
+        days: ["ஞா", "தி", "செ", "பு", "வி", "வெ", "ச"],
+        pickFoodcourt: "உங்கள் உணவகத்தைத் தேர்ந்தெடுக்கவும்",
+        salesAvailable: "கிடைக்கும் விற்பனை",
+        timePeriod: "நேர காலம்",
+        time1: "காலை 8 மணி-10 மணி",
+        time2: "காலை 10 மணி-12 மணி",
+        time3: "மதியம் 12 மணி-3 மணி",
+        time4: "மாலை 3 மணி-5 மணி",
+        time5: "மாலை 5 மணி-7 மணி"
     },
     ms: {
-        menuTitle: "Kategori Menu",
+        menuTitle: "Menu Dewan Makan",
         chinese: "Cina",
         malay: "Melayu",
         korean: "Korea",
         japanese: "Jepun",
         desserts: "Pencuci Mulut",
         drinks: "Minuman",
-        fruits: "Buah & Sayur",
-        scheduleBtn: "Jadual Pelajar",
+        fruits: "Buah-buahan",
+        scheduleBtn: "Jadual Akademik",
         trackerBtn: "Penjejak Makanan",
-        langLabel: "Bahasa"
+        langLabel: "Bahasa",
+        crowdLevelLegend: "Tahap Kesesakan Legenda",
+        low: "Rendah",
+        medium: "Sederhana",
+        high: "Tinggi",
+        weekend: "Hujung Minggu",
+        days: ["Ahd", "Isn", "Sel", "Rab", "Kha", "Jum", "Sab"],
+        pickFoodcourt: "Pilih Dewan Makan Anda",
+        salesAvailable: "Jualan Tersedia",
+        timePeriod: "Tempoh Masa",
+        time1: "8 pagi-10 pagi",
+        time2: "10 pagi-12 tengah hari",
+        time3: "12 tengah hari-3 petang",
+        time4: "3 petang-5 petang",
+        time5: "5 petang-7 malam"
     }
 };
 
@@ -108,6 +164,255 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
+    const chineseCard = document.getElementById("chinese");
+    if (chineseCard) {
+        chineseCard.addEventListener("click", () => {
+            window.location.href = "chinese.html";
+        });
+    }
+
+    /* ============================
+       CHINESE PAGE LOGIC
+    ============================ */
+    if (document.getElementById("chineseMenuTitle")) {
+
+        const stallButtons = document.querySelectorAll(".stall-btn");
+        const foodCards = document.getElementById("food-cards");
+
+        const stallData = {
+
+        /* ===== FC1 ===== */
+        "fc1-ban-mian-fish-soup": {
+            name: "Ban Mian / Fish Soup Stall (FC1)",
+            items: [
+                {
+                    name: "Ban Mian",
+                    price: "$3.00",
+                    rating: "4.2",
+                    comment: "Very chewy noodles and comforting soup. Uncle is friendly!",
+                    image: "static/images/ban_mian.jpg"
+                },
+                {
+                    name: "Sliced Fish Soup with Rice",
+                    price: "$5.00",
+                    rating: "4.2",
+                    comment: "Healthy, comforting choice. Perfect on rainy days.",
+                    image: "static/images/fish_soup.jpg"
+                }
+            ]
+        },
+
+        "fc1-economy-rice": {
+            name: "Mixed Rice / Cai Png Stall (FC1)",
+            items: [
+                {
+                    name: "2 Veg + 1 Meat Cai Png",
+                    price: "$3.00 - $3.50",
+                    rating: "3.9",
+                    comment: "Generous portions. Sweet and sour pork is highly recommended.",
+                    image: "static/images/mixed_rice.jpg"
+                }
+            ]
+        },
+
+        /* ===== FC2 ===== */
+        "fc2-economy-rice": {
+            name: "Economy Rice / Cai Png Stall (FC2)",
+            items: [
+                {
+                    name: "Mixed Rice with Drumstick",
+                    price: "$2.50 - $4.00",
+                    rating: "4.1",
+                    comment: "One of the best drumsticks on campus. Long queues but worth it.",
+                    image: "static/images/mixed_rice.jpg"
+                }
+            ]
+        },
+
+        /* ===== FC3 ===== */
+        "fc3-chinese-cuisine": {
+            name: "Chinese Cuisine Stall (FC3)",
+            items: [
+                {
+                    name: "Steamed Dumplings (Jiaozi)",
+                    price: "~$5.60 (8 pcs)",
+                    rating: "4.1",
+                    comment: "Authentic potstickers with great filling.",
+                    image: "static/images/steamed_dumplings.jpg"
+                },
+                {
+                    name: "Pan-fried Dumplings (Guotie)",
+                    price: "~$5.60 (8 pcs)",
+                    rating: "4.1",
+                    comment: "Crispy base and juicy inside. A student favourite.",
+                    image: "static/images/pan_fried_dumplings.jpg"
+                }
+            ]
+        },
+
+        "fc3-sp-mini-wok": {
+            name: "SP Mini Wok (FC3)",
+            items: [
+                {
+                    name: "Salted Egg Chicken Rice",
+                    price: "$4.30 - $4.50",
+                    rating: "4.5",
+                    comment: "Legendary status. 10/10 flavour but always long queues.",
+                    image: "static/images/salted_egg_chicken_rice.jpg"
+                },
+                {
+                    name: "Mala Chicken Rice",
+                    price: "$4.30",
+                    rating: "4.5",
+                    comment: "Spicy and addictive. Not for the faint-hearted.",
+                    image: "static/images/mala_chicken_rice.jpg"
+                }
+            ]
+        },
+
+        /* ===== FC4 ===== */
+        "fc4-taiwanese-chinese": {
+            name: "Taiwanese / Chinese-style Stall (FC4)",
+            items: [
+                {
+                    name: "Chicken Cutlet Rice",
+                    price: "$4.20 - $4.80",
+                    rating: "4.1",
+                    comment: "Chicken cutlet is the bomb. Crispy and satisfying.",
+                    image: "static/images/chicken_cutlet_rice.jpg"
+                },
+                {
+                    name: "Braised Pork Rice (Lu Rou Fan)",
+                    price: "$4.20 - $4.80",
+                    rating: "4.1",
+                    comment: "Flavour is good but portion can be inconsistent.",
+                    image: "static/images/braised_pork_rice.jpg"
+                }
+            ]
+        },
+
+        "fc4-happiness-sunbo": {
+            name: "Happiness Sunbo Chicken Rice (FC4)",
+            items: [
+                {
+                    name: "Standard Chicken Rice",
+                    price: "~$3.00",
+                    rating: "4.3",
+                    comment: "Cheapest chicken rice in SP. Chili sauce is super punchy.",
+                    image: "static/images/chicken_rice.jpg"
+                }
+            ]
+        },
+
+        /* ===== FC6 ===== */
+        "fc6-noodle-chinese": {
+            name: "Chinese-style Noodle Options (FC6)",
+            items: [
+                {
+                    name: "Fish Ball Noodles",
+                    price: "$2.00 - $3.00",
+                    rating: "3.7",
+                    comment: "Affordable and filling. Great for tight budgets.",
+                    image: "static/images/fish_ball_noodles.jpg"
+                },
+                {
+                    name: "Wanton Noodle Soup",
+                    price: "$3.00",
+                    rating: "3.7",
+                    comment: "Basic but filling. No frills student meal.",
+                    image: "static/images/wanton_noodle_soup.jpg"
+                }
+            ]
+        }
+    };
+
+    /* ===== Stall Button Click ===== */
+    stallButtons.forEach(btn => {
+        btn.addEventListener("click", () => {
+            const stall = stallData[btn.dataset.stall];
+
+            const gridClass = stall.items.length === 1
+            ? "cards-grid single"
+            : "cards-grid";
+
+            foodCards.innerHTML = `<h3>${stall.name}</h3><div class="${gridClass}">`;
+
+            stall.items.forEach(item => {
+                foodCards.innerHTML += `
+                <div class="food-card">
+                <img src="${item.image}">
+                <div class="food-name">${item.name}</div>
+                <div class="food-details">
+                <p><strong>Price:</strong> ${item.price}</p>
+                <p><strong>Rating:</strong> ${item.rating} ⭐</p>
+                <p><em>"${item.comment}"</em></p>
+                </div>
+                </div>
+                `;
+            });
+
+            foodCards.innerHTML += `</div>`;
+            foodCards.style.display = "block";
+
+            // ✨ Fade-in animation
+            foodCards.classList.remove("fade-out");
+            foodCards.classList.add("fade-in");
+            
+            foodCards.scrollIntoView({ behavior: "smooth" });
+        });
+    });
+
+        /* ============================
+           FOOD COURT MAP NAVIGATION
+        ============================ */
+        const foodCourtLocations = {
+            "Food Court 1": "Singapore Polytechnic Food Court 1",
+            "Food Court 2": "Singapore Polytechnic Food Court 2",
+            "Food Court 3": "Food Court 3 (Foodgle)",
+            "Food Court 4": "Koufu Food Court 4 Singapore Poly",
+            "Food Court 6": "Food Canopy - Singapore Poly"
+        };
+
+        const fcButtons = document.querySelectorAll(".fc-btn");
+        const mapFrame = document.getElementById("spMap");
+        const stallButtonsAll = document.querySelectorAll(".stall-btn");
+
+        fcButtons.forEach(btn => {
+            btn.addEventListener("click", () => {
+
+                /* Active button highlight */
+                fcButtons.forEach(b => b.classList.remove("active"));
+                btn.classList.add("active");
+
+                /* Update Map */
+                const location = foodCourtLocations[btn.dataset.fc];
+                mapFrame.src = `https://www.google.com/maps?q=${encodeURIComponent(location)}&output=embed`;
+
+                /* Fade out food cards */
+                if (foodCards.style.display === "block") {
+                    foodCards.classList.remove("fade-in");
+                    foodCards.classList.add("fade-out");
+
+                    setTimeout(() => {
+                        foodCards.style.display = "none";
+                    }, 400);
+                }
+
+                /* Hide all stall buttons */
+                stallButtonsAll.forEach(stallBtn => {
+                    stallBtn.style.display = "none";
+                });
+
+                /* Show selected stalls */
+                stallButtonsAll.forEach(stallBtn => {
+                    if (stallBtn.dataset.fc === btn.dataset.fc) {
+                        stallBtn.style.display = "inline-block";
+                    }
+                });
+            });
+        });
+    }
+
     /* ==================
        FOODCOURT PAGE LOGIC
     =====================*/
@@ -119,11 +424,16 @@ document.addEventListener("DOMContentLoaded", () => {
         const stallList = document.querySelector(".stall-list");
         const timeButtons = document.querySelectorAll(".time-buttons button");
 
-        // Data for Food Courts
+        // Data for Food Courts with translated descriptions
         const fcData = {
             "Food Court 1": {
                 stalls: ["Chicken Rice", "Japanese Curry / Rice Bowls", "Western Cuisine", "Ban Mian / Fish Soup", "Mala Hotpot", "Thai Cuisine", "Yong Tau Foo", "Desserts", "Drinks & Toast Stall"],
-                descriptions: ["A student staple","Very popular","Pastas, chicken chops","","","Basil chicken, noodles","fish-paste stuffed tofu, vegetables, and fried items like bean curd skin etc","Ice Kacang etc.","Main anchor"],
+                descriptions: {
+                    en: ["A student staple", "Very popular", "Pastas, chicken chops", "", "", "Basil chicken, noodles", "", "Ice Kacang etc.", "Main anchor"],
+                    zh: ["学生主食", "非常受欢迎", "意大利面，鸡扒", "", "", "罗勒鸡，面条", "", "冰沙等等", "主要支柱"],
+                    ta: ["மாணவர் முதன்மை", "மிகவும் பிரபலமான", "பாஸ்தா, கோழி சாப்", "", "", "பேசில் கோழி, நூடுல்ஸ்", "", "ஐஸ் ககாங் முதலியன", "முதன்மை ஆங்கர்"],
+                    ms: ["Stap mahasiswa", "Sangat popular", "Pasta, ayam goreng", "", "", "Ayam basil, mi", "", "Ais kacang dll.", "Penambat utama"]
+                },
                 times: {
                     "8am-10am": [60, 50, 40, 30, 20, 25, 20, 50, 70],
                     "10am-12pm": [95, 90, 85, 80, 70, 75, 60, 90, 95],
@@ -134,7 +444,12 @@ document.addEventListener("DOMContentLoaded", () => {
             },
             "Food Court 2": {
                 stalls: ["Vegetarian Stall", "Indonesian Express", "Japanese Stall", "Korean Stall", "Economic Rice (Cai Fan)", "Yong Tau Foo", "Fish Soup / Ban Mian", "Taiwanese Stall", "Malay / Indian Cuisine", "Drinks & Toast Stall"],
-                descriptions: ["Highly rated, known for big portions","Famous for Ayam Penyet/Ayam Panggang","Known for affordable Chicken Don/Karaage Don","Recommended for Hot Stone Bibimbap","The budget staple","Each ingredient priced around $0.40 - $0.50","","","Known for Maggie Goreng","Main anchor"],
+                descriptions: {
+                    en: ["Highly rated, known for big portions", "Famous for Ayam Penyet/Ayam Panggang", "Known for affordable Chicken Don/Karaage Don", "Recommended for Hot Stone Bibimbap", "The budget staple", "Each ingredient priced around $0.40 - $0.50", "", "", "Known for Maggie Goreng", "Main anchor"],
+                    zh: ["评价很高，以大份量闻名", "以阿央佩妮特/阿央庞冈闻名", "以实惠的鸡扒饭/唐扬鸡闻名", "推荐热石拌饭", "预算主食", "每种配料价格约0.40-0.50美元", "", "", "以Maggie Goreng闻名", "主要支柱"],
+                    ta: ["உயர் மதிப்பீடு, பெரிய பங்குகளுக்கு அறியப்பட்ட", "அயம் பென்யட்/அயம் பாங்காங்கிற்கு பிரபலமான", "விலையில்லாத சிக்கன் டான்/கராஜ் டானுக்கு அறியப்பட்ட", "ஹாட் ஸ்டோன் பிபிம்பாப்பிற்கு பரிந்துரைக்கப்படுகிறது", "பட்ஜெட் ஸ்டேபிள்", "ஒவ்வொரு பொருளும் சுமார் $0.40 - $0.50 விலை", "", "", "மேகி கோரெங்கிற்கு அறியப்பட்ட", "முதன்மை ஆங்கர்"],
+                    ms: ["Penilaian tinggi, dikenali untuk bahagian besar", "Terkenal dengan Ayam Penyet/Ayam Panggang", "Dikenali untuk Chicken Don/Karaage Don yang mampu milik", "Disyorkan untuk Hot Stone Bibimbap", "Stap bajet", "Setiap bahan dihargakan sekitar $0.40 - $0.50", "", "", "Dikenali untuk Maggie Goreng", "Penambat utama"]
+                },
                 times: {
                     "8am-10am": [50, 0, 0, 0, 40, 0, 30, 0, 20, 40],
                     "10am-12pm": [100, 95, 90, 90, 95, 60, 80, 50, 80, 95],
@@ -144,8 +459,13 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
             },
             "Food Court 3": {
-                stalls: ["Indonesian Express","SP Mini Wok","Waffle Street","Mr Pasta","Crumbz Up","Mala Hotpot (Shu Xiang)","Chinese Cuisine","The Crowded Bowl","Nasi Lemak / Chicken Rice","Drinks & Toast Stall"],
-                descriptions: ["Famous for Ayam Penyet and spicy chili","Salted Egg Chicken Rice, Mala Chicken Rice","Large, crispy waffles with various toppings/ice cream","Customizable cream and tomato-based pastas","Acai bowls and healthy granola treats","A student favorite with manageable queues","Known for Jiao Zi / pan-fried dumplings","Vegetarian salad bowls","Halal-certified options available","Known for large Ice Milo and breakfast sets"],
+                stalls: ["Indonesian Express","SP Mini Wok","Waffle Street","Mr Pasta","Crumbz Up","Mala Xiang Guo","Chinese Cuisine","The Crowded Bowl","Nasi Lemak / Chicken Rice","Drinks & Toast Stall"],
+                descriptions: {
+                    en: ["Famous for Ayam Penyet and spicy chili","Salted Egg Chicken Rice, Mala Chicken Rice","Large, crispy waffles with various toppings/ice cream","Customizable cream and tomato-based pastas","Acai bowls and healthy granola treats","A student favorite with manageable queues","Known for Jiao Zi / pan-fried dumplings","Vegetarian salad bowls","Halal-certified options available","Known for large Ice Milo and breakfast sets"],
+                    zh: ["以阿央佩妮特和辣椒闻名","咸蛋鸡饭，麻辣鸡饭","大而脆的华夫饼配各种配料/冰淇淋","可定制的奶油和番茄酱意大利面","阿萨伊碗和健康格兰诺拉零食","学生最爱，队伍可管理","以饺子/煎饺闻名","素食沙拉碗","提供清真认证选项","以大冰米洛和早餐套餐闻名"],
+                    ta: ["அயம் பென்யட் மற்றும் மசாலா சிலிக்கு பிரபலமான","உப்பு முட்டை கோழி சாதம், மாலா கோழி சாதம்","பல்வேறு டாப்பிங்ஸ்/ஐஸ் க்ரீமுடன் பெரிய, க்ரிஸ்பி வாஃபிள்ஸ்","தனிப்பயன் க்ரீம் மற்றும் டோமேட்டோ அடிப்படையிலான பாஸ்தாக்கள்","அசாய் பவுல்ஸ் மற்றும் ஆரோக்கியமான கிரானோலா ட்ரீட்ஸ்","மாணவர்களின் பிடித்த, நிர்வகிக்கக்கூடிய வரிசைகள்","ஜியோ சி / பான்-ஃப்ரைட் டம்ப்லிங்ஸுக்கு அறியப்பட்ட","சைவ சாலட் பவுல்ஸ்","ஹலால் சான்றிதழ் விருப்பங்கள் கிடைக்கின்றன","பெரிய ஐஸ் மிலோ மற்றும் பிரேக்ஃபாஸ்ட் செட்களுக்கு அறியப்பட்ட"],
+                    ms: ["Terkenal dengan Ayam Penyet dan cili pedas","Nasi Ayam Telur Masin, Nasi Ayam Mala","Wafel besar, rangup dengan pelbagai topping/ais krim","Pasta krim dan tomato yang boleh disesuaikan","Mangkuk Acai dan rawatan granola sihat","Kegemaran pelajar dengan barisan boleh diurus","Dikenali untuk Jiao Zi / dumpling goreng","Mangkuk salad vegetarian","Pilihan halal tersedia","Dikenali untuk Ice Milo besar dan set sarapan"]
+                },
                 times: {
                     "8am-10am": [60, 30, 60, 0, 0, 0, 20, 0, 50, 70],
                     "10am-12pm": [95, 90, 80, 85, 80, 70, 60, 50, 80, 95],
@@ -156,7 +476,12 @@ document.addEventListener("DOMContentLoaded", () => {
             },
             "Food Court 4": {
                 stalls: ["Mala Xiang Guo","Taiwanese Cuisine","Western Food","Japanese & Korean Cuisine","Ban Mian & Fish Soup","Yong Tau Foo","Nasi Padang / Malay Cuisine","Pao Fan / Seafood Rice","Waffle & Snack Store","Drinks & Breakfast Stall"],
-                descriptions: ["Highly popular, often considered one of the best in SP","Famous for Chicken Cutlet and Braised Pork Rice","Generous portions of Chicken Chop and Pasta","Known for Rice Bowls and Bulgogi Beef","A student favorite for a $3.50 budget meal","Large variety of fresh ingredients","Wide selection of spicy side dishes","Specialized broth-based rice dishes","Famous for large waffles and ice cream","Stays open the longest, often until 9:00 PM"],
+                descriptions: {
+                    en: ["Highly popular, often considered one of the best in SP","Famous for Chicken Cutlet and Braised Pork Rice","Generous portions of Chicken Chop and Pasta","Known for Rice Bowls and Bulgogi Beef","A student favorite for a $3.50 budget meal","Large variety of fresh ingredients","Wide selection of spicy side dishes","Specialized broth-based rice dishes","Famous for large waffles and ice cream","Stays open the longest, often until 9:00 PM"],
+                    zh: ["非常受欢迎, 通常被认为是SP最好的之一","以鸡排和卤肉饭闻名","鸡扒和意大利面的慷慨份量","以饭碗和烤牛肉闻名","学生最爱，3.50美元预算餐","新鲜配料的多种选择","辣味配菜的广泛选择","专业汤底饭菜","以大华夫饼和冰淇淋闻名","营业时间最长，通常到晚上9:00"],
+                    ta: ["SP இல் சிறந்தவற்றில் ஒன்றாக அடிக்கடி கருதப்படும் மிகவும் பிரபலமான","கோழி கட்லெட் மற்றும் பிரேஸ்ட் போர்க் ரைஸுக்கு பிரபலமான","கோழி சாப் மற்றும் பாஸ்தாவின் தாராளமான பங்குகள்","ரைஸ் பவுல்ஸ் மற்றும் புல்கோகி பீஃபுக்கு அறியப்பட்ட","$3.50 பட்ஜெட் உணவுக்கு மாணவர் பிடித்த","புதிய பொருட்களின் பெரிய வகை","மசாலா பக்க உணவுகளின் பரந்த தேர்வு","சிறப்பு புரோத் அடிப்படையிலான ரைஸ் உணவுகள்","பெரிய வாஃபிள்ஸ் மற்றும் ஐஸ் க்ரீமுக்கு பிரபலமான","பெரும்பாலும் மாலை 9:00 வரை திறந்திருக்கும்"],
+                    ms: ["Sangat popular, sering dianggap salah satu yang terbaik di SP","Terkenal dengan Chicken Cutlet dan Braised Pork Rice","Bahagian besar Chicken Chop dan Pasta","Dikenali untuk Rice Bowls dan Bulgogi Beef","Kegemaran pelajar untuk hidangan bajet $3.50","Pelbagai bahan segar yang besar","Pilihan luas hidangan sampingan pedas","Hidangan nasi berasaskan kuah khusus","Terkenal dengan wafel besar dan ais krim","Buka paling lama, sering hingga 9:00 PM"]
+                },
                 times: {
                     "8am-10am": [50, 40, 30, 20, 50, 40, 30, 20, 50, 60],
                     "10am-12pm": [100, 100, 100, 100, 100, 100, 100, 100, 100, 100],
@@ -167,7 +492,12 @@ document.addEventListener("DOMContentLoaded", () => {
             },
             "Food Court 5": {
                 stalls: ["Starbucks","Subway","KFC","Brunch Cafe","Bang Deli","Japanese Stall","Fruit Stall","Drinks Stall"],
-                descriptions: ["The main study hub with a 1-for-1 tradition","Healthy sandwich option","Fried chicken staple","Famous for Japanese Donburi like Pork and Beef bowls","Known for pastries, cakes, and quick lunch boxes","Rotating tenants serving Ramen or Katsu","Fresh juices and sliced fruits","Primary source for local Kopi and Teh"],
+                descriptions: {
+                    en: ["The main study hub with a 1-for-1 tradition","Healthy sandwich option","Fried chicken staple","Famous for Japanese Donburi like Pork and Beef bowls","Known for pastries, cakes, and quick lunch boxes","Rotating tenants serving Ramen or Katsu","Fresh juices and sliced fruits","Primary source for local Kopi and Teh"],
+                    zh: ["主要学习中心, 有1对1传统","健康三明治选项","炸鸡主食","以日式丼饭闻名，如猪肉和牛肉碗","以糕点、蛋糕和快速午餐盒闻名","轮换租户提供拉面或炸猪排","新鲜果汁和切片水果","本地咖啡和茶的主要来源"],
+                    ta: ["1-க்கு-1 மரபுடன் முதன்மை படிப்பு மையம்","ஆரோக்கியமான சாண்ட்விச் விருப்பம்","பிரைட் கோழி ஸ்டேபிள்","பார்க் மற்றும் பீஃப் பவுல்ஸ் போன்ற ஜப்பானிய டான்புரிக்கு பிரபலமான","பேஸ்ட்ரிகள், கேக்குகள் மற்றும் விரைவான மதிய உணவு பாக்ஸ்களுக்கு அறியப்பட்ட","ரேமன் அல்லது கட்சு வழங்கும் சுழலும் குத்தகைதாரர்கள்","புதிய ஜூஸ் மற்றும் துண்டு பழங்கள்","உள்ளூரில் கோபி மற்றும் தேய் பிரதான மூலம்"],
+                    ms: ["Hab utama belajar dengan tradisi 1-untuk-1","Pilihan sandwich sihat","Stap ayam goreng","Terkenal untuk Donburi Jepun seperti mangkuk Babi dan Daging","Dikenali untuk pastri, kek, dan kotak makan tengah hari pantas","Penyewa berputar yang menyajikan Ramen atau Katsu","Jus segar dan buah-buahan iris","Sumber utama untuk Kopi dan Teh tempatan"]
+                },
                 times: {
                     "8am-10am": [60, 40, 0, 0, 50, 0, 50, 60],
                     "10am-12pm": [95, 95, 95, 90, 85, 80, 90, 100],
@@ -178,7 +508,12 @@ document.addEventListener("DOMContentLoaded", () => {
             },
             "Food Court 6": {
                 stalls: ["Creamy Duck","Western Food","Japanese Cuisine","Chicken Rice","Vegetarian Stall","Mixed Vegetable Rice","Yong Tau Foo / Fish Soup","Drinks & Toast Stall"],
-                descriptions: ["Legendary waffles and ice cream, must try!","Famous for large chicken chops and cheap prices","Affordable Teriyaki Chicken and Curry Rice","Reliable daily staple","Healthy and budget-friendly options","Popular for nearby office staff","Variety of fresh ingredients for soups","Early-morning drinks and toast, stays open the longest"],
+                descriptions: {
+                    en: ["Legendary waffles and ice cream, must try!","Famous for large chicken chops and cheap prices","Affordable Teriyaki Chicken and Curry Rice","Reliable daily staple","Healthy and budget-friendly options","Popular for nearby office staff","Variety of fresh ingredients for soups","Early-morning drinks and toast, stays open the longest"],
+                    zh: ["传奇华夫饼和冰淇淋，必须试试！","以大鸡扒和便宜价格闻名","实惠的照烧鸡和咖喱饭","可靠的日常主食","健康且预算友好的选项","附近办公室员工受欢迎","汤品新鲜配料的多种选择","早间饮料和吐司，营业时间最长"],
+                    ta: ["புராண வாஃபிள்ஸ் மற்றும் ஐஸ் க்ரீம், கட்டாயம் முயற்சிக்கவும்!","பெரிய கோழி சாப் மற்றும் மலிவு விலைகளுக்கு பிரபலமான","மலிவான டெரியாகி கோழி மற்றும் கறி சாதம்","நம்பகமான தினசரி ஸ்டேபிள்","ஆரோக்கியமான மற்றும் பட்ஜெட்-நட்பு விருப்பங்கள்","அருகிலுள்ள அலுவலக ஊழியர்களுக்கு பிரபலமான","சூப் களுக்கு புதிய பொருட்களின் வகை","காலை காலை பானங்கள் மற்றும் டோஸ்ட், மிக நீண்ட திறந்திருக்கும்"],
+                    ms: ["Wafel legenda dan ais krim, mesti cuba!","Terkenal dengan ayam goreng besar dan harga murah","Ayam Teriyaki dan Nasi Kari yang mampu milik","Stap harian yang boleh dipercayai","Pilihan sihat dan bajet mesra","Popular untuk kakitangan pejabat berdekatan","Pelbagai bahan segar untuk sup","Minuman pagi dan roti bakar, buka paling lama"]
+                },
                 times: {
                     "8am-10am": [40, 30, 30, 20, 20, 20, 20, 40],
                     "10am-12pm": [95, 95, 95, 90, 90, 90, 90, 95],
@@ -275,7 +610,7 @@ document.addEventListener("DOMContentLoaded", () => {
             stallList.innerHTML = "";
             fcStalls.forEach((stall, i) => {
                 const translatedStall = fcTranslations[currentLang][stall] || stall;
-                const desc = fcDesc[i] || "";
+                const desc = fcDesc[currentLang][i] || "";
                 stallList.innerHTML += `
                     <li>
                         <span>${translatedStall}</span>
@@ -347,6 +682,16 @@ document.addEventListener("DOMContentLoaded", () => {
                     const activeTime = document.querySelector(".time-buttons button.active").dataset.time;
                     updateStallList(fcName, activeTime);
                 }
+
+                // Update page title and sections
+                document.getElementById("pickFoodcourt").innerText = translations[currentLang].pickFoodcourt;
+                document.getElementById("salesAvailable").innerText = translations[currentLang].salesAvailable;
+                document.getElementById("timePeriod").innerText = translations[currentLang].timePeriod;
+                document.getElementById("time1").innerText = translations[currentLang].time1;
+                document.getElementById("time2").innerText = translations[currentLang].time2;
+                document.getElementById("time3").innerText = translations[currentLang].time3;
+                document.getElementById("time4").innerText = translations[currentLang].time4;
+                document.getElementById("time5").innerText = translations[currentLang].time5;
             });
         }
     }
@@ -359,20 +704,35 @@ document.addEventListener("DOMContentLoaded", () => {
             currentLang = this.value;
             const t = translations[this.value];
 
-            document.getElementById("menuTitle").innerText = t.menuTitle;
-            document.querySelector("#chinese span").innerText = t.chinese;
-            document.querySelector("#malay span").innerText = t.malay;
-            document.querySelector("#korean span").innerText = t.korean;
-            document.querySelector("#japanese span").innerText = t.japanese;
-            document.querySelector("#desserts span").innerText = t.desserts;
-            document.querySelector("#drinks span").innerText = t.drinks;
-            document.querySelector("#fruits span").innerText = t.fruits;
-            document.getElementById("scheduleBtn").innerText = t.scheduleBtn;
-            document.getElementById("trackerBtn").innerText = t.trackerBtn;
-            document.getElementById("langLabel").innerText = t.langLabel;
+            // Index page updates
+            if (document.getElementById("menuTitle")) {
+                document.getElementById("menuTitle").innerText = t.menuTitle;
+                document.querySelector("#chinese span").innerText = t.chinese;
+                document.querySelector("#malay span").innerText = t.malay;
+                document.querySelector("#korean span").innerText = t.korean;
+                document.querySelector("#japanese span").innerText = t.japanese;
+                document.querySelector("#desserts span").innerText = t.desserts;
+                document.querySelector("#drinks span").innerText = t.drinks;
+                document.querySelector("#fruits span").innerText = t.fruits;
+                document.getElementById("scheduleBtn").innerText = t.scheduleBtn;
+                document.getElementById("trackerBtn").innerText = t.trackerBtn;
+                document.getElementById("langLabel").innerText = t.langLabel;
+            }
 
-            // Update More Info default text
-            document.getElementById("infoText").innerText = infoTranslations[currentLang].selectDate;
+            // Schedule page updates
+            if (document.getElementById("legendTitle")) {
+                document.getElementById("legendTitle").innerText = t.crowdLevelLegend;
+                document.getElementById("lowLabel").innerText = t.low;
+                document.getElementById("mediumLabel").innerText = t.medium;
+                document.getElementById("highLabel").innerText = t.high;
+                document.getElementById("weekendLabel").innerText = t.weekend;
+                document.getElementById("infoText").innerText = infoTranslations[currentLang].selectDate;
+
+                // Regenerate calendar to update day headers
+                if (typeof generateCalendar === "function") {
+                    generateCalendar();
+                }
+            }
         });
     }
 
@@ -862,7 +1222,7 @@ document.addEventListener("DOMContentLoaded", () => {
     function generateCalendar() {
         calendarGrid.innerHTML = "";
 
-        const days = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+        const days = translations[currentLang].days;
         days.forEach(d => {
             const div = document.createElement("div");
             div.className = "day-header";
@@ -1035,9 +1395,5 @@ document.addEventListener("DOMContentLoaded", () => {
 
         generateCalendar();
     };
-
     generateCalendar();
-
 });
-
-

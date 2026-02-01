@@ -14,7 +14,6 @@
     <!-- NAVBAR-->
     <nav class="navbar">
         <div class="nav-left">
-            <span class="back-btn" onclick="history.back()">←</span>
             <img src="static/images/logo.png" class="logo">
             <span class="app-name">SP FoodPulse Kiosk</span>
         </div>
@@ -32,23 +31,26 @@
     
     <!-- SCHEDULE HEADER -->
     <div class="schedule-header">
-        <h2 id="monthTitle">January 2026</h2>
+        <div class="schedule-title-row">
+            <button class="back-btn" onclick="history.back()">←</button>
+            <h2 id="monthTitle">January 2026</h2>
+        </div>
 
         <div class="legend-card">
-            <div class="legend-title">Crowd Level Legend</div>
+            <div class="legend-title" id="legendTitle">Crowd Level Legend</div>
             
             <div class="legend-grid">
                 <div class="legend-item">
-                    <span class="dot green"></span> Low
+                    <span class="dot green"></span> <span id="lowLabel">Low</span>
                 </div>
                 <div class="legend-item">
-                    <span class="dot yellow"></span> Medium
+                    <span class="dot yellow"></span> <span id="mediumLabel">Medium</span>
                 </div>
                 <div class="legend-item">
-                    <span class="dot red"></span> High
+                    <span class="dot red"></span> <span id="highLabel">High</span>
                 </div>
                 <div class="legend-item">
-                    <span class="dot white"></span> Weekend
+                    <span class="dot white"></span> <span id="weekendLabel">Weekend</span>
                 </div>
             </div>
         </div>
