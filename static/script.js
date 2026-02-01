@@ -326,7 +326,7 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     /* ===== Stall Button Click ===== */
-stallButtons.forEach(btn => {
+    stallButtons.forEach(btn => {
     btn.addEventListener("click", () => {
 
         const stallKey = btn.dataset.stall;

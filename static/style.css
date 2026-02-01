@@ -19,6 +19,10 @@ body {
     background-image: url("./images/malay.jpg");
 }
 
+.menu-card.western {
+    background-image: url("./images/western.jpg");
+}
+
 .menu-card.korean {
     background-image: url("./images/korean.jpg");
 }
