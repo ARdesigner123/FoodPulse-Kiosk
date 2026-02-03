@@ -294,8 +294,8 @@ h2 {
 .modal-card {
     width: 420px;
     background: white;
-    max-height: 90vh;
-    height: 90vh;
+    max-height: 50vh;
+    height: 50vh;
     overflow-y: auto;
     border-radius: 18px;
     padding: 28px;
