@@ -4,6 +4,7 @@ const translations = {
         chinese: "Chinese",
         malay: "Malay",
         korean: "Korean",
+        western: "Western",
         japanese: "Japanese",
         desserts: "Desserts",
         drinks: "Drinks",
@@ -24,12 +25,33 @@ const translations = {
         time2: "10am-12pm",
         time3: "12pm-3pm",
         time4: "3pm-5pm",
-        time5: "5pm-7pm"
+        time5: "5pm-7pm",
+        chineseMenuTitle: "Chinese Food Menu",
+        gpsTitle: "GPS Map of Singapore Polytechnic",
+        gpsHint: "Tap a Food Court button to view its location",
+        foodCourts: {
+            fc1: "Food Court 1",
+            fc2: "Food Court 2",
+            fc3: "Food Court 3",
+            fc4: "Food Court 4",
+            fc6: "Food Court 6"
+        },
+        stalls: {
+            "fc1-ban-mian-fish-soup": "Ban Mian / Fish Soup (FC1)",
+            "fc1-economy-rice": "Economy Rice / Cai Png (FC1)",
+            "fc2-economy-rice": "Economy Rice / Cai Png (FC2)",
+            "fc3-chinese-cuisine": "Chinese Cuisine Stall (FC3)",
+            "fc3-sp-mini-wok": "SP Mini Wok (FC3)",
+            "fc4-taiwanese-chinese": "Taiwanese / Chinese-style Stall (FC4)",
+            "fc4-happiness-sunbo": "Happiness Sunbo Chicken Rice (FC4)",
+            "fc6-noodle-chinese": "Chinese-style Noodle Options (FC6)"
+        }
     },
     zh: {
         menuTitle: "美食广场菜单",
         chinese: "中餐",
         malay: "马来餐",
+        western: "西餐",
         korean: "韩餐",
         japanese: "日餐",
         desserts: "甜点",
@@ -51,12 +73,33 @@ const translations = {
         time2: "上午10点-12点",
         time3: "中午12点-3点",
         time4: "下午3点-5点",
-        time5: "下午5点-7点"
+        time5: "下午5点-7点",
+        chineseMenuTitle: "中式美食菜单",
+        gpsTitle: "新加坡理工学院 GPS 地图",
+        gpsHint: "点击食阁按钮查看位置",
+        foodCourts: {
+            fc1: "食阁 1",
+            fc2: "食阁 2",
+            fc3: "食阁 3",
+            fc4: "食阁 4",
+            fc6: "食阁 6"
+        },
+        stalls: {
+            "fc1-ban-mian-fish-soup": "板面 / 鱼汤摊位 (食阁1)",
+            "fc1-economy-rice": "经济饭 / 菜饭 (食阁1)",
+            "fc2-economy-rice": "经济饭 / 菜饭 (食阁2)",
+            "fc3-chinese-cuisine": "中式美食摊位 (食阁3)",
+            "fc3-sp-mini-wok": "SP 小炒 (食阁3)",
+            "fc4-taiwanese-chinese": "台湾 / 中式摊位 (食阁4)",
+            "fc4-happiness-sunbo": "幸福顺宝鸡饭 (食阁4)",
+            "fc6-noodle-chinese": "中式面条选项 (食阁6)"
+        }
     },
     ta: {
         menuTitle: "உணவு நிலைய மெனு",
         chinese: "சீன உணவு",
         malay: "மலாய் உணவு",
+        western: "மேற்கத்திய உணவு",
         korean: "கொரியன் உணவு",
         japanese: "ஜப்பானிய உணவு",
         desserts: "இனிப்புகள்",
@@ -78,12 +121,33 @@ const translations = {
         time2: "காலை 10 மணி-12 மணி",
         time3: "மதியம் 12 மணி-3 மணி",
         time4: "மாலை 3 மணி-5 மணி",
-        time5: "மாலை 5 மணி-7 மணி"
+        time5: "மாலை 5 மணி-7 மணி",
+        chineseMenuTitle: "சீன உணவு மெனு",
+        gpsTitle: "சிங்கப்பூர் பாலிடெக்னிக் GPS வரைபடம்",
+        gpsHint: "இடத்தை பார்க்க உணவக பொத்தானை அழுத்தவும்",
+        foodCourts: {
+            fc1: "உணவகம் 1",
+            fc2: "உணவகம் 2",
+            fc3: "உணவகம் 3",
+            fc4: "உணவகம் 4",
+            fc6: "உணவகம் 6"
+        },
+        stalls: {
+            "fc1-ban-mian-fish-soup": "பான் மியான் / மீன் சூப் (உணவகம் 1)",
+            "fc1-economy-rice": "பொருளாதார அரிசி / காய் பொங்க் (உணவகம் 1)",
+            "fc2-economy-rice": "பொருளாதார அரிசி / காய் பொங்க் (உணவகம் 2)",
+            "fc3-chinese-cuisine": "சீன உணவு கடை (உணவகம் 3)",
+            "fc3-sp-mini-wok": "SP மினி வோக் (உணவகம் 3)",
+            "fc4-taiwanese-chinese": "தைவானிய / சீன பாணி கடை (உணவகம் 4)",
+            "fc4-happiness-sunbo": "ஹாப்பினஸ் சன்போ சிக்கன் ரைஸ் (உணவகம் 4)",
+            "fc6-noodle-chinese": "சீன பாணி நூடுல் விருப்பங்கள் (உணவகம் 6)"
+        }
     },
     ms: {
         menuTitle: "Menu Dewan Makan",
         chinese: "Cina",
         malay: "Melayu",
+        western: "Barat",
         korean: "Korea",
         japanese: "Jepun",
         desserts: "Pencuci Mulut",
@@ -105,7 +169,434 @@ const translations = {
         time2: "10 pagi-12 tengah hari",
         time3: "12 tengah hari-3 petang",
         time4: "3 petang-5 petang",
-        time5: "5 petang-7 malam"
+        time5: "5 petang-7 malam",
+        chineseMenuTitle: "Menu Makanan Cina",
+        gpsTitle: "Peta GPS Politeknik Singapura",
+        gpsHint: "Tekan butang dewan makan untuk melihat lokasi",
+        foodCourts: {
+            fc1: "Dewan Makan 1",
+            fc2: "Dewan Makan 2",
+            fc3: "Dewan Makan 3",
+            fc4: "Dewan Makan 4",
+            fc6: "Dewan Makan 6"
+        },
+        stalls: {
+            "fc1-ban-mian-fish-soup": "Gerai Ban Mian / Sup Ikan (FC1)",
+            "fc1-economy-rice": "Gerai Nasi Campur / Cai Png (FC1)",
+            "fc2-economy-rice": "Gerai Nasi Campur / Cai Png (FC2)",
+            "fc3-chinese-cuisine": "Gerai Masakan Cina (FC3)",
+            "fc3-sp-mini-wok": "SP Mini Wok (FC3)",
+            "fc4-taiwanese-chinese": "Gerai Taiwan / Cina (FC4)",
+            "fc4-happiness-sunbo": "Happiness Sunbo Nasi Ayam (FC4)",
+            "fc6-noodle-chinese": "Pilihan Mee Cina (FC6)"
+        }
+    }
+};
+
+const stallTranslations = {
+    en: {
+        labels: {
+            price: "Price",
+            rating: "Rating",
+            unavailable: "Menu data unavailable. Please try another stall."
+        },
+        stalls: {
+            "fc1-ban-mian-fish-soup": {
+                name: "Ban Mian / Fish Soup Stall (FC1)",
+                items: [
+                    {
+                        name: "Ban Mian",
+                        comment: "Very chewy noodles and comforting soup. Uncle is friendly!"
+                    },
+                    {
+                        name: "Sliced Fish Soup with Rice",
+                        comment: "Healthy, comforting choice. Perfect on rainy days."
+                    }
+                ]
+            },
+            "fc1-economy-rice": {
+                name: "Mixed Rice / Cai Png Stall (FC1)",
+                items: [
+                    {
+                        name: "2 Veg + 1 Meat Cai Png",
+                        comment: "Generous portions. Sweet and sour pork is highly recommended."
+                    }
+                ]
+            },
+            "fc2-economy-rice": {
+                name: "Economy Rice / Cai Png Stall (FC2)",
+                items: [
+                    {
+                        name: "Mixed Rice with Drumstick",
+                        comment: "One of the best drumsticks on campus. Long queues but worth it."
+                    }
+                ]
+            },
+            "fc3-chinese-cuisine": {
+                name: "Chinese Cuisine Stall (FC3)",
+                items: [
+                    {
+                        name: "Steamed Dumplings (Jiaozi)",
+                        comment: "Authentic potstickers with great filling."
+                    },
+                    {
+                        name: "Pan-fried Dumplings (Guotie)",
+                        comment: "Crispy base and juicy inside. A student favourite."
+                    }
+                ]
+            },
+            "fc3-sp-mini-wok": {
+                name: "SP Mini Wok (FC3)",
+                items: [
+                    {
+                        name: "Salted Egg Chicken Rice",
+                        comment: "Legendary status. 10/10 flavour but always long queues."
+                    },
+                    {
+                        name: "Mala Chicken Rice",
+                        comment: "Spicy and addictive. Not for the faint-hearted."
+                    }
+                ]
+            },
+            "fc4-taiwanese-chinese": {
+                name: "Taiwanese / Chinese-style Stall (FC4)",
+                items: [
+                    {
+                        name: "Chicken Cutlet Rice",
+                        comment: "Chicken cutlet is the bomb. Crispy and satisfying."
+                    },
+                    {
+                        name: "Braised Pork Rice (Lu Rou Fan)",
+                        comment: "Flavour is good but portion can be inconsistent."
+                    }
+                ]
+            },
+            "fc4-happiness-sunbo": {
+                name: "Happiness Sunbo Chicken Rice (FC4)",
+                items: [
+                    {
+                        name: "Standard Chicken Rice",
+                        comment: "Cheapest chicken rice in SP. Chili sauce is super punchy."
+                    }
+                ]
+            },
+            "fc6-noodle-chinese": {
+                name: "Chinese-style Noodle Options (FC6)",
+                items: [
+                    {
+                        name: "Fish Ball Noodles",
+                        comment: "Affordable and filling. Great for tight budgets."
+                    },
+                    {
+                        name: "Wanton Noodle Soup",
+                        comment: "Basic but filling. No frills student meal."
+                    }
+                ]
+            }
+        }
+    },
+    zh: {
+        labels: {
+            price: "价格",
+            rating: "评分",
+            unavailable: "菜单数据不可用，请选择其他摊位。"
+        },
+        stalls: {
+            "fc1-ban-mian-fish-soup": {
+                name: "板面 / 鱼汤摊位(食阁1)",
+                items: [
+                    {
+                        name: "板面",
+                        comment: "面条很有嚼劲，汤很暖胃，老板很亲切。"
+                    },
+                    {
+                        name: "鱼片汤配饭",
+                        comment: "清淡又健康，下雨天很适合。"
+                    }
+                ]
+            },
+            "fc1-economy-rice": {
+                name: "经济饭 / 菜饭(食阁1)",
+                items: [
+                    {
+                        name: "两菜一肉菜饭",
+                        comment: "分量十足，糖醋猪肉很好吃。"
+                    }
+                ]
+            },
+            "fc2-economy-rice": {
+                name: "经济饭 / 菜饭摊位 (食阁2)",
+                items: [
+                    {
+                        name: "鸡腿混合饭",
+                        comment: "校园最好的鸡腿之一。排长队但值得。"
+                    }
+                ]
+            },
+            "fc3-chinese-cuisine": {
+                name: "中式美食摊位 (食阁3)",
+                items: [
+                    {
+                        name: "水饺 (Jiaozi)",
+                        comment: "正宗锅贴，馅料很好。"
+                    },
+                    {
+                        name: "煎饺 (Guotie)",
+                        comment: "底部酥脆，内部多汁。学生最爱。"
+                    }
+                ]
+            },
+            "fc3-sp-mini-wok": {
+                name: "SP 小炒 (食阁3)",
+                items: [
+                    {
+                        name: "咸蛋鸡饭",
+                        comment: "传奇地位。10/10 味道但总是排长队。"
+                    },
+                    {
+                        name: "麻辣鸡饭",
+                        comment: "辣而上瘾。不适合胆小的人。"
+                    }
+                ]
+            },
+            "fc4-taiwanese-chinese": {
+                name: "台湾 / 中式摊位 (食阁4)",
+                items: [
+                    {
+                        name: "鸡排饭",
+                        comment: "鸡排炸得很好。酥脆而满足。"
+                    },
+                    {
+                        name: "卤肉饭 (Lu Rou Fan)",
+                        comment: "味道不错但份量可能不一致。"
+                    }
+                ]
+            },
+            "fc4-happiness-sunbo": {
+                name: "幸福顺宝鸡饭 (食阁4)",
+                items: [
+                    {
+                        name: "标准鸡饭",
+                        comment: "SP 最便宜的鸡饭。辣酱超级劲道。"
+                    }
+                ]
+            },
+            "fc6-noodle-chinese": {
+                name: "中式面条选项 (食阁6)",
+                items: [
+                    {
+                        name: "鱼丸面",
+                        comment: "实惠而饱腹。适合预算紧张的学生。"
+                    },
+                    {
+                        name: "云吞面汤",
+                        comment: "基本但饱腹。没有多余的学生餐。"
+                    }
+                ]
+            }
+        }
+    },
+    ta: {
+        labels: {
+            price: "விலை",
+            rating: "மதிப்பீடு",
+            unavailable: "மெனு கிடைக்கவில்லை. வேறு கடையை தேர்ந்தெடுக்கவும்."
+        },
+        stalls: {
+            "fc1-ban-mian-fish-soup": {
+                name: "பான் மியான் / மீன் சூப் (உணவகம் 1)",
+                items: [
+                    {
+                        name: "பான் மியான்",
+                        comment: "நூடுல்ஸ் மென்மையாகவும் சூப் சுவையாகவும் உள்ளது."
+                    },
+                    {
+                        name: "மீன் துண்டு சூப் சாதம்",
+                        comment: "ஆரோக்கியமான மற்றும் ஆறுதல் தரும் உணவு."
+                    }
+                ]
+            },
+            "fc1-economy-rice": {
+                name: "பொருளாதார அரிசி / காய் பொங்க் (உணவகம் 1)",
+                items: [
+                    {
+                        name: "2 காய்கறி + 1 இறைச்சி காய் பொங்க்",
+                        comment: "பெரிய அளவுகள். சீனி மற்றும் புளிப்பு பன்றி இறைச்சி மிகவும் பரிந்துரைக்கப்படுகிறது."
+                    }
+                ]
+            },
+            "fc2-economy-rice": {
+                name: "பொருளாதார அரிசி / காய் பொங்க் (உணவகம் 2)",
+                items: [
+                    {
+                        name: "கொழுப்பு காலுடன் கலந்த அரிசி",
+                        comment: "வளாகத்தில் சிறந்த கொழுப்பு கால்களில் ஒன்று. நீண்ட வரிசைகள் ஆனால் மதிப்பு உள்ளது."
+                    }
+                ]
+            },
+            "fc3-chinese-cuisine": {
+                name: "சீன உணவு கடை (உணவகம் 3)",
+                items: [
+                    {
+                        name: "ஆவியில் வேகவைக்கப்பட்ட டம்ப்லிங்ஸ் (Jiaozi)",
+                        comment: "அசல் போட்ஸ்டிக்கர்கள் நல்ல நிரப்பலுடன்."
+                    },
+                    {
+                        name: "பான்-பிரைட் டம்ப்லிங்ஸ் (Guotie)",
+                        comment: "கிரிஸ்பி அடிப்பகுதி மற்றும் சூஸ் உட்புறம். மாணவர்களின் பிடித்தது."
+                    }
+                ]
+            },
+            "fc3-sp-mini-wok": {
+                name: "SP மினி வோக் (உணவகம் 3)",
+                items: [
+                    {
+                        name: "உப்பு முட்டை சிக்கன் ரைஸ்",
+                        comment: "புராண நிலை. 10/10 சுவை ஆனால் எப்போதும் நீண்ட வரிசைகள்."
+                    },
+                    {
+                        name: "மாலா சிக்கன் ரைஸ்",
+                        comment: "காரமான மற்றும் போதைக்கு உள்ளாக்கும். பயந்தவர்களுக்கு இல்லை."
+                    }
+                ]
+            },
+            "fc4-taiwanese-chinese": {
+                name: "தைவானிய / சீன பாணி கடை (உணவகம் 4)",
+                items: [
+                    {
+                        name: "சிக்கன் கட்லெட் ரைஸ்",
+                        comment: "சிக்கன் கட்லெட் அருமை. கிரிஸ்பி மற்றும் திருப்திகரமான."
+                    },
+                    {
+                        name: "பிரேஸ்ட் பார்க் ரைஸ் (Lu Rou Fan)",
+                        comment: "சுவை நல்லது ஆனால் அளவு மாறுபடலாம்."
+                    }
+                ]
+            },
+            "fc4-happiness-sunbo": {
+                name: "ஹாப்பினஸ் சன்போ சிக்கன் ரைஸ் (உணவகம் 4)",
+                items: [
+                    {
+                        name: "நிலையான சிக்கன் ரைஸ்",
+                        comment: "SP இல் மிகவும் மலிவான சிக்கன் ரைஸ். சிலி சாஸ் மிகவும் கடுமையானது."
+                    }
+                ]
+            },
+            "fc6-noodle-chinese": {
+                name: "சீன பாணி நூடுல் விருப்பங்கள் (உணவகம் 6)",
+                items: [
+                    {
+                        name: "மீன் பால் நூடுல்ஸ்",
+                        comment: "மலிவான மற்றும் நிரப்பும். கடுமையான பட்ஜெட்டுகளுக்கு சிறந்தது."
+                    },
+                    {
+                        name: "வான்டன் நூடுல் சூப்",
+                        comment: "அடிப்படை ஆனால் நிரப்பும். எளிமையான மாணவர் உணவு."
+                    }
+                ]
+            }
+        }
+    },
+    ms: {
+        labels: {
+            price: "Harga",
+            rating: "Penilaian",
+            unavailable: "Menu tidak tersedia. Sila pilih gerai lain."
+        },
+        stalls: {
+            "fc1-ban-mian-fish-soup": {
+                name: "Gerai Ban Mian / Sup Ikan (FC1)",
+                items: [
+                    {
+                        name: "Ban Mian",
+                        comment: "Mi kenyal dan sup yang menyenangkan."
+                    },
+                    {
+                        name: "Sup Ikan dengan Nasi",
+                        comment: "Pilihan sihat dan mengenyangkan."
+                    }
+                ]
+            },
+            "fc1-economy-rice": {
+                name: "Gerai Nasi Campur / Cai Png (FC1)",
+                items: [
+                    {
+                        name: "2 Sayur + 1 Daging Cai Png",
+                        comment: "Bahagian yang murah hati. Daging babi manis dan masam sangat disyorkan."
+                    }
+                ]
+            },
+            "fc2-economy-rice": {
+                name: "Gerai Nasi Campur / Cai Png (FC2)",
+                items: [
+                    {
+                        name: "Nasi Campur dengan Paha Ayam",
+                        comment: "Salah satu paha ayam terbaik di kampus. Barisan panjang tetapi berbaloi."
+                    }
+                ]
+            },
+            "fc3-chinese-cuisine": {
+                name: "Gerai Masakan Cina (FC3)",
+                items: [
+                    {
+                        name: "Dumpling Kukus (Jiaozi)",
+                        comment: "Potsticker asli dengan isian yang hebat."
+                    },
+                    {
+                        name: "Dumpling Goreng (Guotie)",
+                        comment: "Dasar rangup dan dalaman juicy. Kegemaran pelajar."
+                    }
+                ]
+            },
+            "fc3-sp-mini-wok": {
+                name: "SP Mini Wok (FC3)",
+                items: [
+                    {
+                        name: "Nasi Ayam Telur Masin",
+                        comment: "Status legenda. 10/10 rasa tetapi selalu barisan panjang."
+                    },
+                    {
+                        name: "Nasi Ayam Mala",
+                        comment: "Pedas dan ketagihan. Bukan untuk yang lemah hati."
+                    }
+                ]
+            },
+            "fc4-taiwanese-chinese": {
+                name: "Gerai Taiwan / Cina (FC4)",
+                items: [
+                    {
+                        name: "Nasi Ayam Goreng",
+                        comment: "Ayam goreng adalah bom. Rangup dan memuaskan."
+                    },
+                    {
+                        name: "Nasi Daging Babi Rebus (Lu Rou Fan)",
+                        comment: "Rasa baik tetapi bahagian boleh tidak konsisten."
+                    }
+                ]
+            },
+            "fc4-happiness-sunbo": {
+                name: "Happiness Sunbo Nasi Ayam (FC4)",
+                items: [
+                    {
+                        name: "Nasi Ayam Standard",
+                        comment: "Nasi ayam termurah di SP. Sos cili sangat kuat."
+                    }
+                ]
+            },
+            "fc6-noodle-chinese": {
+                name: "Pilihan Mee Cina (FC6)",
+                items: [
+                    {
+                        name: "Mee Bola Ikan",
+                        comment: "Murah dan mengenyangkan. Hebat untuk bajet ketat."
+                    },
+                    {
+                        name: "Sup Mee Wantan",
+                        comment: "Asas tetapi mengenyangkan. Makanan pelajar tanpa bumbu."
+                    }
+                ]
+            }
+        }
     }
 };
 
@@ -168,6 +659,55 @@ document.addEventListener("DOMContentLoaded", () => {
     if (chineseCard) {
         chineseCard.addEventListener("click", () => {
             window.location.href = "chinese.html";
+        });
+    }
+
+    const malayCard = document.getElementById("malay");
+    if (malayCard) {
+        malayCard.addEventListener("click", () => {
+            window.location.href = "malay.html";
+        });
+    }
+
+    const koreanCard = document.getElementById("korean");
+    if (koreanCard) {
+        koreanCard.addEventListener("click", () => {
+            window.location.href = "korean.html";
+        });
+    }
+
+    const westernCard = document.getElementById("western");
+    if (westernCard) {
+        westernCard.addEventListener("click", () => {
+            window.location.href = "western.html";
+        });
+    }
+
+    const japaneseCard = document.getElementById("japanese");
+    if (japaneseCard) {
+        japaneseCard.addEventListener("click", () => {
+            window.location.href = "japanese.html";
+        });
+    }
+
+    const dessertsCard = document.getElementById("desserts");
+    if (dessertsCard) {
+        dessertsCard.addEventListener("click", () => {
+            window.location.href = "desserts.html";
+        });
+    }
+
+    const drinksCard = document.getElementById("drinks");
+    if (drinksCard) {
+        drinksCard.addEventListener("click", () => {
+            window.location.href = "drinks.html";
+        });
+    }
+
+    const fruitsAndVegetablesCard = document.getElementById("fruits");
+    if (fruitsAndVegetablesCard) {
+        fruitsAndVegetablesCard.addEventListener("click", () => {
+            window.location.href = "FruitsAndVegetables.html";
         });
     }
 
@@ -325,6 +865,58 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     };
 
+    let currentLang = 'en';
+
+    const languageDropdown = document.getElementById("languageDropdown");
+
+    function applyLanguage(lang) {
+        const t = translations[lang];
+        if (!t) return;
+
+        /* Navbar */
+        const langLabel = document.getElementById("langLabel");
+        if (langLabel) langLabel.textContent = t.langLabel;
+
+        /* Chinese page */
+        const title = document.getElementById("chineseMenuTitle");
+        if (title) title.textContent = t.chineseMenuTitle;
+
+        const gpsTitle = document.getElementById("gpsTitle");
+        if (gpsTitle) gpsTitle.textContent = t.gpsTitle;
+
+        const gpsHint = document.getElementById("gpsHint");
+        if (gpsHint) gpsHint.textContent = t.gpsHint;
+
+        /* Food court buttons */
+        const fc1 = document.getElementById("fc1");
+        const fc2 = document.getElementById("fc2");
+        const fc3 = document.getElementById("fc3");
+        const fc4 = document.getElementById("fc4");
+        const fc6 = document.getElementById("fc6");
+
+        if (fc1) fc1.textContent = t.foodCourts.fc1;
+        if (fc2) fc2.textContent = t.foodCourts.fc2;
+        if (fc3) fc3.textContent = t.foodCourts.fc3;
+        if (fc4) fc4.textContent = t.foodCourts.fc4;
+        if (fc6) fc6.textContent = t.foodCourts.fc6;
+
+        /* Stall buttons */
+        stallButtons.forEach(btn => {
+            const stallKey = btn.dataset.stall;
+            if (t.stalls && t.stalls[stallKey]) {
+                btn.textContent = t.stalls[stallKey];
+            }
+        });
+    }
+
+    /* Trigger on change */
+    if (languageDropdown) {
+        languageDropdown.addEventListener("change", e => {
+            currentLang = e.target.value;
+            applyLanguage(currentLang);
+        });
+    }
+
     /* ===== Stall Button Click ===== */
     stallButtons.forEach(btn => {
     btn.addEventListener("click", () => {
@@ -337,7 +929,7 @@ document.addEventListener("DOMContentLoaded", () => {
             console.error("Stall data not found:", stallKey);
             foodCards.innerHTML = `
                 <p style="color:red; text-align:center;">
-                    Menu data unavailable. Please try another stall.
+                    ${stallTranslations[currentLang]?.labels?.unavailable || stallTranslations.en.labels.unavailable}
                 </p>
             `;
             foodCards.style.display = "block";
@@ -348,22 +940,31 @@ document.addEventListener("DOMContentLoaded", () => {
             ? "cards-grid single"
             : "cards-grid";
 
-        foodCards.innerHTML = `<h3>${stall.name}</h3><div class="${gridClass}">`;
+        const langStall = stallTranslations[currentLang]?.stalls[stallKey] || stallTranslations.en.stalls[stallKey];
 
-        stall.items.forEach(item => {
+        const labels = stallTranslations[currentLang]?.labels || stallTranslations.en.labels;
+
+        foodCards.innerHTML = `<h3>${langStall.name}</h3><div class="${gridClass}">`;
+
+        stall.items.forEach((item, index) => {
+            const translatedItem =
+            langStall.items[index] || stall.items[index];
+
             foodCards.innerHTML += `
-                <div class="food-card">
-                    <img src="${item.image}" 
-                         alt="${item.name}"
-                         onerror="this.src='static/images/placeholder.jpg'">
-                    <div class="food-name">${item.name}</div>
-                    <div class="food-details">
-                        <p><strong>Price:</strong> ${item.price}</p>
-                        <p><strong>Rating:</strong> ${item.rating} ⭐</p>
-                        <p><em>"${item.comment}"</em></p>
-                    </div>
+            <div class="food-card">
+                <img src="${item.image}"
+                     alt="${translatedItem.name}"
+                     onerror="this.src='static/images/placeholder.jpg'">
+
+                <div class="food-name">${translatedItem.name}</div>
+
+                <div class="food-details">
+                    <p><strong>${labels.price}:</strong> ${item.price}</p>
+                    <p><strong>${labels.rating}:</strong> ${item.rating} ⭐</p>
+                    <p><em>"${translatedItem.comment}"</em></p>
                 </div>
-            `;
+            </div>
+        `;   
         });
 
         foodCards.innerHTML += `</div>`;
@@ -723,6 +1324,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 document.getElementById("menuTitle").innerText = t.menuTitle;
                 document.querySelector("#chinese span").innerText = t.chinese;
                 document.querySelector("#malay span").innerText = t.malay;
+                document.querySelector("#western span").innerText = t.western;
                 document.querySelector("#korean span").innerText = t.korean;
                 document.querySelector("#japanese span").innerText = t.japanese;
                 document.querySelector("#desserts span").innerText = t.desserts;
