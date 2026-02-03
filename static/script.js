@@ -660,6 +660,8 @@ const logoutBtn = document.getElementById("logoutBtn");
 
 let isLoginMode = false;
 
+const API_BASE = "https://foodpulse-backend.onrender.com/api";
+
 /* =========================
    FOOD COURT → STALL DATA
 ========================= */
@@ -719,36 +721,42 @@ const foodCourtStalls = {
     ]
 };
 
-function getVendors() {
-    return JSON.parse(localStorage.getItem("foodpulseVendors")) || {};
-}
-
-function saveVendors(vendors) {
-    localStorage.setItem("foodpulseVendors", JSON.stringify(vendors));
-}
-
 /* =========================
    OPEN PROFILE MODAL
 ========================= */
 profileBtn.addEventListener("click", () => {
     vendorModal.style.display = "flex";
 
-    const loggedIn = localStorage.getItem("vendorLoggedIn") === "true";
-    const activeVendor = localStorage.getItem("activeVendor");
-    const vendors = getVendors();
+    const token = localStorage.getItem("token");
 
-    if (loggedIn && activeVendor && vendors[activeVendor]) {
-        authSection.style.display = "none";
-        profileSection.style.display = "block";
-
-        profileName.textContent = activeVendor;
-        profileFoodCourt.textContent = vendors[activeVendor].foodCourt;
-        profileStall.textContent = vendors[activeVendor].stall;
-    } else {
+    if (!token) {
         profileSection.style.display = "none";
         authSection.style.display = "block";
         showRegisterMode();
+        return;
     }
+
+    fetch(`${API_BASE}/profile`, {
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    })
+    .then(res => {
+        if (!res.ok) throw new Error();
+        return res.json();
+    })
+    .then(user => {
+        authSection.style.display = "none";
+        profileSection.style.display = "block";
+
+        profileName.textContent = user.username;
+        profileFoodCourt.textContent = user.foodCourt || "";
+        profileStall.textContent = user.stall || "";
+    })
+    .catch(() => {
+        localStorage.removeItem("token");
+        showRegisterMode();
+    });
 });
 
 /* =========================
@@ -801,49 +809,51 @@ actionBtn.addEventListener("click", () => {
     const stall = vendorStall.value;
 
     if (!isValidUsername(name)) {
-        showError(
-            "Vendor Name must start with a letter and include uppercase, lowercase & number (5–30 chars)."
-        );
+        showError("Invalid username format.");
         return;
     }
 
-    const vendors = getVendors();
-
-    /* ========= LOGIN ========= */
-    if (isLoginMode) {
-        if (!vendors[name]) {
-            showError("Username does not exist. Please register first.");
-            return;
-        }
-
-        localStorage.setItem("vendorLoggedIn", "true");
-        localStorage.setItem("activeVendor", name);
-        vendorModal.style.display = "none";
-    }
-
-    /* ======== REGISTER ======== */
-    else {
-        if (vendors[name]) {
-            showError("Username already exists. Please choose another name.");
-            return;
-        }
-
+    /* ========= REGISTER ========= */
+    if (!isLoginMode) {
         if (!foodCourt || !stall) {
             showError("Please select Food Court and Food Stall.");
             return;
         }
 
-        vendors[name] = {
-            foodCourt,
-            stall
-        };
+        fetch(`${API_BASE}/register`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ username: name, foodCourt, stall })
+        })
+        .then(res => res.json())
+        .then(data => {
+            if (data.error) {
+                showError(data.error);
+                return;
+            }
+            localStorage.setItem("token", data.token);
+            vendorModal.style.display = "none";
+        })
+        .catch(() => showError("Server error. Please try again."));
+    }
 
-        saveVendors(vendors);
-
-        localStorage.setItem("vendorLoggedIn", "true");
-        localStorage.setItem("activeVendor", name);
-
-        vendorModal.style.display = "none";
+    /* ========= LOGIN ========= */
+    else {
+        fetch(`${API_BASE}/login`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ username: name })
+        })
+        .then(res => res.json())
+        .then(data => {
+            if (data.error) {
+                showError(data.error);
+                return;
+            }
+            localStorage.setItem("token", data.token);
+            vendorModal.style.display = "none";
+        })
+        .catch(() => showError("Server error. Please try again."));
     }
 });
 
@@ -887,8 +897,7 @@ toggleAuth.addEventListener("click", () => {
    LOG OUT
 ========================= */
 logoutBtn.addEventListener("click", () => {
-    localStorage.removeItem("vendorLoggedIn");
-    localStorage.removeItem("activeVendor");
+    localStorage.removeItem("token");
     vendorModal.style.display = "none";
 });
 
