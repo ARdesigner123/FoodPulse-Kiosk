@@ -147,10 +147,62 @@ items:[{
    TRANSLATIONS
 ========================= */
 const translations = {
-en:{ title:"Fruits & Vegetables in SP", gpsTitle:"GPS Map of Singapore Polytechnic", gpsHint:"Tap a Food Court button to view its location", langLabel:"Language", labels:{price:"Price", rating:"Rating"} },
-zh:{ title:"SP 校园水果与蔬菜", gpsTitle:"新加坡理工学院地图", gpsHint:"点击食阁查看位置", langLabel:"语言", labels:{price:"价格", rating:"评分"} },
-ms:{ title:"Buah & Sayur di SP", gpsTitle:"Peta GPS Politeknik Singapura", gpsHint:"Tekan dewan makan untuk lokasi", langLabel:"Bahasa", labels:{price:"Harga", rating:"Penilaian"} },
-ta:{ title:"SP பழங்கள் & காய்கறிகள்", gpsTitle:"SP GPS வரைபடம்", gpsHint:"உணவகத்தை தேர்வு செய்யவும்", langLabel:"மொழி", labels:{price:"விலை", rating:"மதிப்பீடு"} }
+en:{
+    title:"Fruits & Vegetables in SP",
+    gpsTitle:"GPS Map of Singapore Polytechnic",
+    gpsHint:"Tap a Food Court button to view its location",
+    langLabel:"Language",
+    labels:{price:"Price", rating:"Rating"},
+    foodCourts:{
+        fc1:"Food Court 1",
+        fc3:"Food Court 3",
+        fc4:"Food Court 4",
+        fc5:"Food Court 5",
+        fc6:"Food Court 6"
+    }
+},
+zh:{
+    title:"SP 校园水果与蔬菜",
+    gpsTitle:"新加坡理工学院地图",
+    gpsHint:"点击食阁查看位置",
+    langLabel:"语言",
+    labels:{price:"价格", rating:"评分"},
+    foodCourts:{
+        fc1:"第一食阁",
+        fc3:"第三食阁",
+        fc4:"第四食阁",
+        fc5:"第五食阁",
+        fc6:"第六食阁"
+    }
+},
+ms:{
+    title:"Buah & Sayur di SP",
+    gpsTitle:"Peta GPS Politeknik Singapura",
+    gpsHint:"Tekan dewan makan untuk lokasi",
+    langLabel:"Bahasa",
+    labels:{price:"Harga", rating:"Penilaian"},
+    foodCourts:{
+        fc1:"Dewan Makan 1",
+        fc3:"Dewan Makan 3",
+        fc4:"Dewan Makan 4",
+        fc5:"Dewan Makan 5",
+        fc6:"Dewan Makan 6"
+    }
+},
+ta:{
+    title:"SP பழங்கள் & காய்கறிகள்",
+    gpsTitle:"SP GPS வரைபடம்",
+    gpsHint:"உணவகத்தை தேர்வு செய்யவும்",
+    langLabel:"மொழி",
+    labels:{price:"விலை", rating:"மதிப்பீடு"},
+    foodCourts:{
+        fc1:"உணவகம் 1",
+        fc3:"உணவகம் 3",
+        fc4:"உணவகம் 4",
+        fc5:"உணவகம் 5",
+        fc6:"உணவகம் 6"
+    }
+}
 };
 
 /* =========================
@@ -158,10 +210,19 @@ ta:{ title:"SP பழங்கள் & காய்கறிகள்", gpsTitle
 ========================= */
 function applyLanguage(lang){
     currentLang = lang;
+
     document.getElementById("pageTitle").textContent = translations[lang].title;
     document.getElementById("gpsTitle").textContent = translations[lang].gpsTitle;
     document.getElementById("gpsHint").textContent = translations[lang].gpsHint;
     document.getElementById("langLabel").textContent = translations[lang].langLabel;
+
+    // 🔹 Translate Food Court buttons
+    fcButtons.forEach(btn => {
+        const key = btn.dataset.key;
+        if (translations[lang].foodCourts[key]) {
+            btn.textContent = translations[lang].foodCourts[key];
+        }
+    });
 }
 
 /* =========================
