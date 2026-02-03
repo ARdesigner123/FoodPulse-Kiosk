@@ -658,7 +658,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const closingHourBtn = document.getElementById("closingHourBtn");
     if (closingHourBtn) {
         closingHourBtn.addEventListener("click", () => {
-            window.location.href = "closinghour.html";
+            window.location.href = "closingHour.html";
         });
     }
 
