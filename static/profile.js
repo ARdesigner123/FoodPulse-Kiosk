@@ -4,12 +4,6 @@
 const profileBtn = document.getElementById("profileBtn");
 const vendorModal = document.getElementById("vendorModal");
 
-if (!profileBtn || !vendorModal) {
-    // Profile UI not present on this page → do nothing
-    console.log("Profile module skipped on this page");
-    return;
-}
-
 const authSection = document.getElementById("authSection");
 const profileSection = document.getElementById("profileSection");
 

@@ -1031,6 +1031,7 @@ document.addEventListener("DOMContentLoaded", () => {
     /* ==================
        FOODCOURT PAGE LOGIC
     =====================*/
+    const API_BASE = "https://foodpulse-backend.onrender.com/api";
     const foodcourtGrid = document.querySelector(".foodcourt-grid");
     if (foodcourtGrid) {
         const foodcourtCards = document.querySelectorAll(".foodcourt-card");
@@ -1217,21 +1218,47 @@ document.addEventListener("DOMContentLoaded", () => {
         let currentLang = "en";
 
         // Function to update stall list names and descriptions
-        function updateStallList(fcName, timePeriod) {
+        async function updateStallList(fcName, timePeriod) {
             const fcStalls = fcData[fcName].stalls;
             const fcDesc = fcData[fcName].descriptions;
-            const fcPercent = fcData[fcName].times[timePeriod];
+            const defaultPercent = fcData[fcName].times[timePeriod];
 
+            // 1️⃣ Clone default percentages
+            let finalPercent = [...defaultPercent];
+
+            // 2️⃣ Fetch live availability
+            try {
+                const res = await fetch(
+                    `${API_BASE}/availability?foodCourt=${encodeURIComponent(fcName)}&timePeriod=${encodeURIComponent(timePeriod)}`
+                );
+                const liveData = await res.json();
+
+                // 3️⃣ Override matching stalls
+                liveData.forEach(live => {
+                    const index = fcStalls.findIndex(
+                        s => s.toLowerCase().includes(live.stall.toLowerCase())
+                    );
+                    if (index !== -1) {
+                        finalPercent[index] = live.percentage;
+                    }
+                });
+            } catch (e) {
+                console.warn("Using default data");
+            }
+            
+            // 4️⃣ Render UI
             stallList.innerHTML = "";
             fcStalls.forEach((stall, i) => {
                 const translatedStall = fcTranslations[currentLang][stall] || stall;
                 const desc = fcDesc[currentLang][i] || "";
+                const percent = finalPercent[i] || 0;
+
                 stallList.innerHTML += `
                     <li>
                         <span>${translatedStall}</span>
-                        <span class="percent-text">${fcPercent[i] || 0}%</span>
+                        <span class="percent-text">${percent}%</span>
                         ${desc ? `<small>${desc}</small>` : ""}
-                        <div class="bar" style="width: ${fcPercent[i] || 0}%"></div>
+                        <div class="bar" style="width: ${percent}%"></div>
                     </li>
                 `;
             });

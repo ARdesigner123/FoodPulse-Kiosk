@@ -36,79 +36,79 @@
 
     <!-- VENDOR MODAL -->
     <div class="modal-overlay" id="vendorModal" style="display:none;">
-    <div class="modal-card" id="authCard">
+        <div class="modal-card" id="authCard">
 
-        <!-- REGISTER / LOGIN FORM -->
-        <div id="authSection">
-            <h3 id="modalTitle">FoodPulse Membership</h3>
-            <p class="modal-subtitle" id="modalSubtitle">For Food Court Vendors</p>
+            <!-- REGISTER / LOGIN FORM -->
+            <div id="authSection">
+                <h3 id="modalTitle">FoodPulse Membership</h3>
+                <p class="modal-subtitle" id="modalSubtitle">For Food Court Vendors</p>
 
-            <div class="input-group">
-                <label for="vendorName">Enter Vendor Name</label>
-                <input type="text" id="vendorName" placeholder="e.g. ChickenRice1">
-                <small class="hint">
-                    Starts with a letter, includes uppercase, lowercase & number (5-30 chars)
-                </small>
-            </div>
+                <div class="input-group">
+                    <label for="vendorName">Enter Vendor Name</label>
+                    <input type="text" id="vendorName" placeholder="e.g. ChickenRice1">
+                    <small class="hint">
+                        Starts with a letter, includes uppercase, lowercase & number (5-30 chars)
+                    </small>
+                </div>
 
-            <p id="errorText" class="error-text" style="display:none;"></p>
+                <p id="errorText" class="error-text" style="display:none;"></p>
 
-            <select id="vendorFoodCourt">
-                <option value="">Select Food Court</option>
-                <option>Food Court 1</option>
-                <option>Food Court 2</option>
-                <option>Food Court 3</option>
-                <option>Food Court 4</option>
-                <option>Food Court 5</option>
-                <option>Food Court 6</option>
-            </select>
-
-            <select id="vendorStall" disabled>
-                <option value="">Select Food Stall</option>
-            </select>
-
-            <button class="primary-btn" id="actionBtn">Register</button>
-
-            <p class="modal-link">
-                <span id="toggleAuth">Already a member? Sign In</span>
-            </p>
-        </div>
-
-        <!-- PROFILE VIEW -->
-        <div id="profileSection" style="display:none;">
-            <h3>Your Vendor Profile</h3>
-
-            <p><strong>Vendor Name:</strong><br><span id="profileName"></span></p>
-            <p><strong>Food Court:</strong><br><span id="profileFoodCourt"></span></p>
-            <p><strong>Food Stall:</strong><br><span id="profileStall"></span></p>
-
-            <!-- 🔽 VENDOR EDIT UI -->
-            <div id="vendorEditSection">
-                <h3>Update Food Availability</h3>
-
-                <label>Time Period</label>
-                <select id="editTime">
-                    <option value="8am-10am">8am-10am</option>
-                    <option value="10am-12pm">10am-12pm</option>
-                    <option value="12pm-3pm">12pm-3pm</option>
-                    <option value="3pm-5pm">3pm-5pm</option>
-                    <option value="5pm-7pm">5pm-7pm</option>
+                <select id="vendorFoodCourt">
+                    <option value="">Select Food Court</option>
+                    <option>Food Court 1</option>
+                    <option>Food Court 2</option>
+                    <option>Food Court 3</option>
+                    <option>Food Court 4</option>
+                    <option>Food Court 5</option>
+                    <option>Food Court 6</option>
                 </select>
 
-                <label>Availability (%)</label>
-                <input type="number" id="editPercent" min="0" max="100">
+                <select id="vendorStall" disabled>
+                    <option value="">Select Food Stall</option>
+                </select>
 
-                <button class="primary-btn" id="saveAvailability">Save</button>
-                <p id="saveMsg"></p>
+                <button class="primary-btn" id="actionBtn">Register</button>
+
+                <p class="modal-link">
+                    <span id="toggleAuth">Already a member? Sign In</span>
+                </p>
             </div>
-            <!-- 🔼 END -->
 
-            <button class="primary-btn" id="logoutBtn" style="margin-top:16px;">
-                Log Out
-            </button>
+            <!-- PROFILE VIEW -->
+            <div id="profileSection" style="display:none;">
+                <h3>Your Vendor Profile</h3>
+
+                <p><strong>Vendor Name:</strong><br><span id="profileName"></span></p>
+                <p><strong>Food Court:</strong><br><span id="profileFoodCourt"></span></p>
+                <p><strong>Food Stall:</strong><br><span id="profileStall"></span></p>
+
+                <!-- 🔽 VENDOR EDIT UI -->
+                <div id="vendorEditSection">
+                    <h3>Update Food Availability</h3>
+
+                    <label>Time Period</label>
+                    <select id="editTime">
+                        <option value="8am-10am">8am-10am</option>
+                        <option value="10am-12pm">10am-12pm</option>
+                        <option value="12pm-3pm">12pm-3pm</option>
+                        <option value="3pm-5pm">3pm-5pm</option>
+                        <option value="5pm-7pm">5pm-7pm</option>
+                    </select>
+
+                    <label>Availability (%)</label>
+                    <input type="number" id="editPercent" min="0" max="100">
+
+                    <button class="primary-btn" id="saveAvailability">Save</button>
+                    <p id="saveMsg"></p>
+                </div>
+                <!-- 🔼 END -->
+                
+                <button class="primary-btn" id="logoutBtn" style="margin-top:16px;">
+                    Log Out
+                </button>
+            </div>
         </div>
     </div>
-</div>
 
     <!-- MAIN CONTENT -->
     <div class="container">
