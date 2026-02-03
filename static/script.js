@@ -635,6 +635,263 @@ const infoTranslations = {
     }
 };
 
+/* =========================
+   PROFILE & VENDOR LOGIC
+========================= */
+const profileBtn = document.getElementById("profileBtn");
+const vendorModal = document.getElementById("vendorModal");
+
+const authSection = document.getElementById("authSection");
+const profileSection = document.getElementById("profileSection");
+
+const actionBtn = document.getElementById("actionBtn");
+const toggleAuth = document.getElementById("toggleAuth");
+const errorText = document.getElementById("errorText");
+
+const vendorNameInput = document.getElementById("vendorName");
+const vendorFoodCourt = document.getElementById("vendorFoodCourt");
+const vendorStall = document.getElementById("vendorStall");
+
+const profileName = document.getElementById("profileName");
+const profileFoodCourt = document.getElementById("profileFoodCourt");
+const profileStall = document.getElementById("profileStall");
+
+const logoutBtn = document.getElementById("logoutBtn");
+
+let isLoginMode = false;
+
+/* =========================
+   FOOD COURT → STALL DATA
+========================= */
+const foodCourtStalls = {
+    "Food Court 1": [
+        "Japanese Curry",
+        "Western Food",
+        "Chicken Rice",
+        "Ban Mian / Fish Soup",
+        "Drinks & Snacks Stall"
+    ],
+    "Food Court 2": [
+        "Indonesian Express",
+        "Japanese Food",
+        "Yong Tau Foo",
+        "Vegetarian",
+        "Malay / Indian"
+    ],
+    "Food Court 3": [
+        "SP Mini Wok",
+        "Chicken Rice / Nasi Lemak",
+        "Mala Xiang Guo",
+        "Indonesian Express",
+        "Thai Food",
+        "Chinese Cuisine / Dumplings",
+        "Western Food",
+        "Waffles Store",
+        "Drinks & Fruits Stall"
+    ],
+    "Food Court 4": [
+        "M&B Western",
+        "Tamagood (Bake & Bowl)",
+        "Taiwanese Cuisine",
+        "Thai Food",
+        "Ban Mian / Fish Soup",
+        "Breakfast & Toast Stall",
+        "Fruit Stall",
+        "Drinks Stall"
+    ],
+    "Food Court 5": [
+        "KFC",
+        "Subway",
+        "Starbucks",
+        "Bang Deli",
+        "Brunch Cafe",
+        "Fruit Stall"
+    ],
+    "Food Court 6": [
+        "Creamy Duck",
+        "Chicken Rice Stall",
+        "Japanese Stall",
+        "Western Stall",
+        "Thai Shop",
+        "Malay Food",
+        "Noodle / Soup Stall",
+        "Drinks & Dessert Stall"
+    ]
+};
+
+function getVendors() {
+    return JSON.parse(localStorage.getItem("foodpulseVendors")) || {};
+}
+
+function saveVendors(vendors) {
+    localStorage.setItem("foodpulseVendors", JSON.stringify(vendors));
+}
+
+/* =========================
+   OPEN PROFILE MODAL
+========================= */
+profileBtn.addEventListener("click", () => {
+    vendorModal.style.display = "flex";
+
+    const loggedIn = localStorage.getItem("vendorLoggedIn") === "true";
+    const activeVendor = localStorage.getItem("activeVendor");
+    const vendors = getVendors();
+
+    if (loggedIn && activeVendor && vendors[activeVendor]) {
+        authSection.style.display = "none";
+        profileSection.style.display = "block";
+
+        profileName.textContent = activeVendor;
+        profileFoodCourt.textContent = vendors[activeVendor].foodCourt;
+        profileStall.textContent = vendors[activeVendor].stall;
+    } else {
+        profileSection.style.display = "none";
+        authSection.style.display = "block";
+        showRegisterMode();
+    }
+});
+
+/* =========================
+   CLOSE MODAL
+========================= */
+vendorModal.addEventListener("click", (e) => {
+    if (e.target === vendorModal) {
+        vendorModal.style.display = "none";
+    }
+});
+
+/* =========================
+   DYNAMIC STALL DROPDOWN
+========================= */
+vendorFoodCourt.addEventListener("change", () => {
+    const selectedFC = vendorFoodCourt.value;
+
+    vendorStall.innerHTML = `<option value="">Select Food Stall</option>`;
+    vendorStall.disabled = true;
+
+    if (!selectedFC || !foodCourtStalls[selectedFC]) return;
+
+    foodCourtStalls[selectedFC].forEach(stall => {
+        const option = document.createElement("option");
+        option.value = stall;
+        option.textContent = stall;
+        vendorStall.appendChild(option);
+    });
+
+    vendorStall.disabled = false;
+});
+
+function isValidUsername(name) {
+    return /^[A-Za-z](?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{4,29}$/.test(name);
+}
+
+function showError(message) {
+    errorText.textContent = message;
+    errorText.style.display = "block";
+}
+
+/* =========================
+   REGISTER / LOGIN
+========================= */
+actionBtn.addEventListener("click", () => {
+    errorText.style.display = "none";
+
+    const name = vendorNameInput.value.trim();
+    const foodCourt = vendorFoodCourt.value;
+    const stall = vendorStall.value;
+
+    if (!isValidUsername(name)) {
+        showError(
+            "Vendor Name must start with a letter and include uppercase, lowercase & number (5–30 chars)."
+        );
+        return;
+    }
+
+    const vendors = getVendors();
+
+    /* ========= LOGIN ========= */
+    if (isLoginMode) {
+        if (!vendors[name]) {
+            showError("Username does not exist. Please register first.");
+            return;
+        }
+
+        localStorage.setItem("vendorLoggedIn", "true");
+        localStorage.setItem("activeVendor", name);
+        vendorModal.style.display = "none";
+    }
+
+    /* ======== REGISTER ======== */
+    else {
+        if (vendors[name]) {
+            showError("Username already exists. Please choose another name.");
+            return;
+        }
+
+        if (!foodCourt || !stall) {
+            showError("Please select Food Court and Food Stall.");
+            return;
+        }
+
+        vendors[name] = {
+            foodCourt,
+            stall
+        };
+
+        saveVendors(vendors);
+
+        localStorage.setItem("vendorLoggedIn", "true");
+        localStorage.setItem("activeVendor", name);
+
+        vendorModal.style.display = "none";
+    }
+});
+
+function showLoginMode() {
+    isLoginMode = true;
+
+    actionBtn.textContent = "Login";
+    toggleAuth.textContent = "Not a member? Register";
+
+    vendorFoodCourt.style.display = "none";
+    vendorStall.style.display = "none";
+
+    errorText.style.display = "none";
+}
+
+function showRegisterMode() {
+    isLoginMode = false;
+
+    actionBtn.textContent = "Register";
+    toggleAuth.textContent = "Already a member? Sign In";
+
+    vendorFoodCourt.style.display = "block";
+    vendorStall.style.display = "block";
+
+    vendorNameInput.value = "";
+    vendorFoodCourt.value = "";
+    vendorStall.innerHTML = `<option value="">Select Food Stall</option>`;
+    vendorStall.disabled = true;
+
+    errorText.style.display = "none";
+}
+
+/* =========================
+   TOGGLE LOGIN / REGISTER
+========================= */
+toggleAuth.addEventListener("click", () => {
+    isLoginMode ? showRegisterMode() : showLoginMode();
+});
+
+/* =========================
+   LOG OUT
+========================= */
+logoutBtn.addEventListener("click", () => {
+    localStorage.removeItem("vendorLoggedIn");
+    localStorage.removeItem("activeVendor");
+    vendorModal.style.display = "none";
+});
+
 document.addEventListener("DOMContentLoaded", () => {
 
     /* ==================
