@@ -82,11 +82,31 @@
             <p><strong>Food Court:</strong><br><span id="profileFoodCourt"></span></p>
             <p><strong>Food Stall:</strong><br><span id="profileStall"></span></p>
 
+            <!-- 🔽 VENDOR EDIT UI -->
+            <div id="vendorEditSection">
+                <h3>Update Food Availability</h3>
+
+                <label>Time Period</label>
+                <select id="editTime">
+                    <option value="8am-10am">8am-10am</option>
+                    <option value="10am-12pm">10am-12pm</option>
+                    <option value="12pm-3pm">12pm-3pm</option>
+                    <option value="3pm-5pm">3pm-5pm</option>
+                    <option value="5pm-7pm">5pm-7pm</option>
+                </select>
+
+                <label>Availability (%)</label>
+                <input type="number" id="editPercent" min="0" max="100">
+
+                <button class="primary-btn" id="saveAvailability">Save</button>
+                <p id="saveMsg"></p>
+            </div>
+            <!-- 🔼 END -->
+
             <button class="primary-btn" id="logoutBtn" style="margin-top:16px;">
                 Log Out
             </button>
         </div>
-
     </div>
 </div>
 

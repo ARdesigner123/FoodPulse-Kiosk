@@ -4,12 +4,23 @@
 const profileBtn = document.getElementById("profileBtn");
 const vendorModal = document.getElementById("vendorModal");
 
+if (!profileBtn || !vendorModal) {
+    // Profile UI not present on this page → do nothing
+    console.log("Profile module skipped on this page");
+    return;
+}
+
 const authSection = document.getElementById("authSection");
 const profileSection = document.getElementById("profileSection");
 
 const actionBtn = document.getElementById("actionBtn");
 const toggleAuth = document.getElementById("toggleAuth");
 const errorText = document.getElementById("errorText");
+
+const saveBtn = document.getElementById("saveAvailability");
+const editTime = document.getElementById("editTime");
+const editPercent = document.getElementById("editPercent");
+const saveMsg = document.getElementById("saveMsg");
 
 const vendorNameInput = document.getElementById("vendorName");
 const vendorFoodCourt = document.getElementById("vendorFoodCourt");
@@ -130,6 +141,40 @@ vendorModal.addEventListener("click", (e) => {
         vendorModal.style.display = "none";
     }
 });
+
+if (saveBtn) {
+    saveBtn.addEventListener("click", () => {
+        const token = localStorage.getItem("token");
+
+        if (!token) {
+            saveMsg.textContent = "Not logged in";
+            return;
+        }
+
+        fetch(`${API_BASE}/update-availability`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`
+            },
+            body: JSON.stringify({
+                timePeriod: editTime.value,
+                percentage: Number(editPercent.value)
+            })
+        })
+        .then(res => res.json())
+        .then(data => {
+            if (data.error) {
+                saveMsg.textContent = data.error;
+            } else {
+                saveMsg.textContent = "Updated successfully ✅";
+            }
+        })
+        .catch(() => {
+            saveMsg.textContent = "Server error";
+        });
+    });
+}
 
 /* =========================
    DYNAMIC STALL DROPDOWN
