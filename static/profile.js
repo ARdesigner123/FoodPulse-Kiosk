@@ -302,3 +302,35 @@ logoutBtn.addEventListener("click", () => {
     localStorage.removeItem("token");
     vendorModal.style.display = "none";
 });
+
+const saveClosingBtn = document.getElementById("saveClosingDiscount");
+
+if (saveClosingBtn) {
+    saveClosingBtn.addEventListener("click", () => {
+        const token = localStorage.getItem("token");
+
+        if (!token) {
+            alert("Please login first");
+            return;
+        }
+
+        fetch(`${API_BASE}/closing-discount`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`
+            },
+            body: JSON.stringify({
+                foodName: document.getElementById("foodName").value,
+                originalPrice: Number(document.getElementById("originalPrice").value),
+                discountedPrice: Number(document.getElementById("discountedPrice").value),
+                quantity: Number(document.getElementById("quantity").value),
+                startTime: "5pm",
+                endTime: "7pm"
+            })
+        })
+        .then(res => res.json())
+        .then(() => alert("Closing hour discount updated ✅"))
+        .catch(() => alert("Error saving discount"));
+    });
+}

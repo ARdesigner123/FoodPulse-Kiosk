@@ -99,6 +99,21 @@
                     <input type="number" id="editPercent" min="0" max="100">
 
                     <button class="primary-btn" id="saveAvailability">Save</button>
+                    
+                    <h3>Closing Hour Discount</h3>
+
+                    <input type="text" id="foodName" placeholder="Food Name">
+                    <input type="number" id="originalPrice" placeholder="Original Price">
+                    <input type="number" id="discountedPrice" placeholder="Discounted Price">
+                    <input type="number" id="quantity" placeholder="Quantity">
+
+                    <select id="closingTime">
+                        <option value="5pm-7pm">5pm-7pm</option>
+                    </select>
+
+                    <button class="primary-btn" id="saveClosingDiscount">
+                        Save Discount
+                    </button>
                     <p id="saveMsg"></p>
                 </div>
                 <!-- 🔼 END -->
@@ -152,10 +167,9 @@
         <div class="action-buttons">
             <button class="primary-btn" id="scheduleBtn">Student Schedule</button>
             <button class="secondary-btn" id="trackerBtn">Food Tracker</button>
+            <button class="secondary-btn" id="closingHourBtn">Closing-Hour Discount</button>
         </div>
-
     </div>
-
 </div>
 
 <!-- JS -->

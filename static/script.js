@@ -655,6 +655,13 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
+    const closingHourBtn = document.getElementById("closingHourBtn");
+    if (closingHourBtn) {
+        closingHourBtn.addEventListener("click", () => {
+            window.location.href = "closinghour.html";
+        });
+    }
+
     const chineseCard = document.getElementById("chinese");
     if (chineseCard) {
         chineseCard.addEventListener("click", () => {
